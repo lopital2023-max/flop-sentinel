@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-26T20:01:23.388Z",
+  "observationCount": 8,
+  "eventCount": 3,
+  "events": [
+    {
+      "id": "2026-08-26T20:01:23.388Z:technocore-openapi",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "sourceId": "technocore-openapi",
+      "sourceUrl": "https://technocore.chat/openapi.json",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "Service version changed from 0.9.6 to 0.9.7.",
+        "Added paths: /config."
+      ],
+      "sha256": "823573a61e433d693130c5e822663a5a426d3df0247fdc99aaa2ae27de49cd79"
+    },
+    {
+      "id": "2026-08-26T20:01:23.388Z:flop-github-repos",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "sourceId": "flop-github-repos",
+      "sourceUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "Updated repositories: technocore-chat."
+      ],
+      "sha256": "2bce0295f2a51a52a925ce3ba08e53d22b547d75348f2204e1fb1a75c00f51d1"
+    },
+    {
+      "id": "2026-08-26T15:17:34.082Z:flop-site",
+      "observedAt": "2026-08-26T15:17:34.082Z",
+      "sourceId": "flop-site",
+      "sourceUrl": "https://flop.finance/",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "The normalized content hash changed."
+      ],
+      "sha256": "4981b05c81cbb4610fd1948e05571901aac7007f8d682f80525e7a7fbfa45108"
+    }
+  ],
+  "disclaimer": "A source change is not automatically a product or protocol change. Review its evidence URL."
+}

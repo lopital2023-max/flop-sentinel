@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { loadSiteData } from "../lib/site-data.mjs";
+
+const { status, trust } = await loadSiteData();
+const verdicts = [
+  ["VERIFIED_OFFICIAL_ROOT", "固定した公式URLとの完全一致。ページ内容や将来の安全まで保証するものではありません。", "Exact match to a pinned official URL. It does not guarantee page content or future safety."],
+  ["OFFICIALLY_REFERENCED", "公式namespaceまたは公式参照先の範囲内。個別の内容は別途検証が必要です。", "Inside an official namespace or configured reference. Specific content still needs review."],
+  ["UNVERIFIED", "現在の証拠では公式性を確認できません。詐欺の断定ではありません。", "Current evidence cannot establish official provenance. This is not an accusation of fraud."],
+  ["CONFLICTS_WITH_CURRENT_OFFICIAL_STATE", "入力の主張が、観測中の現行仕様と明示的に矛盾します。", "A claim explicitly conflicts with the currently observed specification."],
+  ["HIGH_RISK_PATTERN", "秘密情報要求、userinfo、類似ドメインなど、停止すべき指標があります。", "Secret requests, user-info, lookalike domains, or another stop signal was detected."],
+];
+---
+
+<Layout
+  title="Method — FLOP Sentinel"
+  description="How FLOP Sentinel classifies official sources, claims, and risk indicators."
+  current="methodology"
+>
+  <header class="page-intro">
+    <p class="eyebrow">OPEN DECISION MODEL</p>
+    <h1 data-lang="ja">結論より、判定の作り方を公開する。</h1>
+    <h1 data-lang="en" hidden>Publish the method, not just the verdict.</h1>
+    <p data-lang="ja">ブラックリストや不透明なAIスコアではなく、固定したroot、決定論的規則、観測時刻、証拠hashを組み合わせます。</p>
+    <p data-lang="en" hidden>No opaque AI score or private blacklist—only pinned roots, deterministic rules, observation time, and evidence hashes.</p>
+  </header>
+
+  <div class="method-stack">
+    <section class="method-card">
+      <div>
+        <p class="eyebrow">01 · COLLECT</p>
+        <h2 data-lang="ja">固定sourceだけを読む</h2>
+        <h2 data-lang="en" hidden>Read pinned sources only</h2>
+      </div>
+      <div>
+        <p data-lang="ja">collectorは任意URLを受け付けず、設定とコードの両方に固定した4つの公式URLだけを読みます。redirectも許可host内に制限します。</p>
+        <p data-lang="en" hidden>The collector accepts no arbitrary URL. It reads four sources pinned in both configuration and code, with redirects restricted to approved hosts.</p>
+        <ul>
+          {status.sources.map((source) => (
+            <li><a href={source.url} target="_blank" rel="noreferrer">{source.id}</a> · <code>{source.sha256?.slice(0, 16)}…</code></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="method-card">
+      <div>
+        <p class="eyebrow">02 · CLASSIFY</p>
+        <h2 data-lang="ja">originと発言者を分ける</h2>
+        <h2 data-lang="en" hidden>Separate origin from author</h2>
+      </div>
+      <div>
+        <p data-lang="ja">公式ドメイン上にあることと、公式声明であることは同じではありません。特に次の領域はユーザー投稿として扱います。</p>
+        <p data-lang="en" hidden>Being hosted on an official domain is not the same as being an official statement. These zones remain user content:</p>
+        <ul>
+          {trust.untrustedHostedZones.map((zone) => (
+            <li><code>{zone.origin}{zone.pathPrefix}*</code> — {zone.reason}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="method-card">
+      <div>
+        <p class="eyebrow">03 · CHECK</p>
+        <h2 data-lang="ja">ブラウザ内で決定論的に照合</h2>
+        <h2 data-lang="en" hidden>Check deterministically in-browser</h2>
+      </div>
+      <div>
+        <p data-lang="ja">入力URLへアクセスせず、URL構文、hostname、Punycode、userinfo、port、既知root、秘密情報要求、claim文脈、コントラクト掲載状況を検査します。</p>
+        <p data-lang="en" hidden>Without fetching submitted URLs, we inspect syntax, hostname, Punycode, user-info, ports, roots, secret requests, claim context, and published contracts.</p>
+      </div>
+    </section>
+
+    <section class="method-card">
+      <div>
+        <p class="eyebrow">04 · EXPLAIN</p>
+        <h2 data-lang="ja">5段階の判定</h2>
+        <h2 data-lang="en" hidden>Five evidence verdicts</h2>
+      </div>
+      <div>
+        <table class="verdict-table">
+          <thead><tr><th>Verdict</th><th><span data-lang="ja">意味</span><span data-lang="en" hidden>Meaning</span></th></tr></thead>
+          <tbody>
+            {verdicts.map(([code, ja, en]) => (
+              <tr>
+                <td><code>{code}</code></td>
+                <td><span data-lang="ja">{ja}</span><span data-lang="en" hidden>{en}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="method-card">
+      <div>
+        <p class="eyebrow">LIMITS</p>
+        <h2 data-lang="ja">このサイトが証明しないこと</h2>
+        <h2 data-lang="en" hidden>What this site cannot prove</h2>
+      </div>
+      <div>
+        <ul data-lang="ja">
+          <li>サイトやスマートコントラクトの絶対的な安全性</li>
+          <li>エアドロップの存在、配分、受給資格</li>
+          <li>DID投稿者の本人性や誠実性</li>
+          <li>観測時刻より後の公式変更</li>
+          <li>未知のチェーン・ウォレット仕様</li>
+        </ul>
+        <ul data-lang="en" hidden>
+          <li>Absolute safety of a site or smart contract</li>
+          <li>Airdrop existence, allocation, or eligibility</li>
+          <li>The identity or honesty of a DID author</li>
+          <li>Official changes after the observation time</li>
+          <li>Unpublished chain or wallet specifications</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>

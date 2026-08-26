@@ -1,0 +1,22 @@
+[
+  {
+    "id": "technocore-openapi",
+    "url": "https://technocore.chat/openapi.json",
+    "kind": "openapi"
+  },
+  {
+    "id": "technocore-auth",
+    "url": "https://technocore.chat/auth.md",
+    "kind": "text"
+  },
+  {
+    "id": "flop-site",
+    "url": "https://flop.finance/",
+    "kind": "html"
+  },
+  {
+    "id": "flop-github-repos",
+    "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+    "kind": "github-repos"
+  }
+]

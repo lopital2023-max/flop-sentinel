@@ -1,0 +1,15 @@
+# Local state and secret-bearing files
+.local/
+*.keystore.json
+*.pem
+*.key
+
+# JavaScript tooling
+node_modules/
+coverage/
+dist/
+.astro/
+.env*
+
+# Editor / OS
+.DS_Store

@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FLOP: Check local environment",
+      "type": "shell",
+      "command": "npm run setup",
+      "problemMatcher": []
+    },
+    {
+      "label": "FLOP: Run local tests",
+      "type": "shell",
+      "command": "npm test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "FLOP: Check official sources",
+      "type": "shell",
+      "command": "npm run monitor",
+      "problemMatcher": []
+    },
+    {
+      "label": "FLOP: Build status.json",
+      "type": "shell",
+      "command": "npm run web:data",
+      "problemMatcher": []
+    },
+    {
+      "label": "FLOP: Verify signed evidence",
+      "type": "shell",
+      "command": "npm run attest:verify",
+      "problemMatcher": []
+    },
+    {
+      "label": "FLOP: Start web development server",
+      "type": "shell",
+      "command": "npm run dev",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "FLOP: Build static website",
+      "type": "shell",
+      "command": "npm run build",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

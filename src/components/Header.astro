@@ -1,0 +1,39 @@
+---
+const { current = "home" } = Astro.props;
+const links = [
+  { id: "home", href: "/", ja: "現在地", en: "Status" },
+  { id: "verify", href: "/verify/", ja: "検証する", en: "Verify" },
+  { id: "changes", href: "/changes/", ja: "変更履歴", en: "Changes" },
+  { id: "proof", href: "/proof/", ja: "証跡", en: "Proof" },
+  { id: "methodology", href: "/methodology/", ja: "判定方法", en: "Method" },
+];
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
+---
+
+<header class="site-header">
+  <a class="brand" href={base} aria-label="FLOP Sentinel home">
+    <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true">
+      <path d="M22 3 38 9v11c0 10-6.7 17-16 21C12.7 37 6 30 6 20V9l16-6Z"></path>
+      <path d="m14 23 5 5 11-13"></path>
+    </svg>
+    <span><strong>FLOP</strong> Sentinel</span>
+    <span class="unofficial-pill">UNOFFICIAL</span>
+  </a>
+
+  <nav aria-label="Primary navigation">
+    {links.map((link) => (
+      <a href={siteHref(link.href)} aria-current={current === link.id ? "page" : undefined}>
+        <span data-lang="ja">{link.ja}</span>
+        <span data-lang="en" hidden>{link.en}</span>
+      </a>
+    ))}
+  </nav>
+
+  <div class="language-switch" role="group" aria-label="Language">
+    <button type="button" data-set-language="ja" aria-pressed="true">JA</button>
+    <button type="button" data-set-language="en" aria-pressed="false">EN</button>
+  </div>
+</header>

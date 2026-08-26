@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Verify — FLOP Sentinel"
+  description="Check FLOP URLs, messages, and contract addresses locally against pinned evidence."
+  current="verify"
+>
+  <header class="page-intro">
+    <p class="eyebrow">LOCAL CLAIM ANALYZER</p>
+    <h1 data-lang="ja">貼り付ける。照合する。根拠を見る。</h1>
+    <h1 data-lang="en" hidden>Paste it. Check it. See why.</h1>
+    <p data-lang="ja">URL、SNS投稿、claim手順、コントラクトアドレスを貼り付けてください。入力内容とリンク先は、このブラウザの外へ送信されません。</p>
+    <p data-lang="en" hidden>Paste a URL, social post, claim instruction, or contract address. Neither the input nor its destinations leave this browser.</p>
+  </header>
+
+  <div class="verifier-layout">
+    <div>
+      <form id="verify-form" class="verify-panel" novalidate>
+        <label for="claim-input">
+          <span data-lang="ja">検証する内容</span>
+          <span data-lang="en" hidden>Content to verify</span>
+        </label>
+        <textarea
+          id="claim-input"
+          name="claim"
+          maxlength="20000"
+          required
+          spellcheck="false"
+          placeholder="URL、投稿文、0x... アドレス"
+        ></textarea>
+        <div class="form-meta">
+          <span id="data-state"><span class="live-dot"></span><span data-lang="ja">データ読込中</span><span data-lang="en" hidden>Loading evidence</span></span>
+          <span><span id="character-count">0</span> / 20,000</span>
+        </div>
+
+        <div class="example-list" aria-label="Examples">
+          <button type="button" data-example="https://flop.finance/">
+            <span data-lang="ja">公式root</span><span data-lang="en" hidden>Official root</span>
+          </button>
+          <button type="button" data-example="https://technocore.chat/r/lobby">
+            <span data-lang="ja">ユーザー投稿領域</span><span data-lang="en" hidden>User content</span>
+          </button>
+          <button type="button" data-example="Claim FLOP at https://flop.finance.evil.example/claim">
+            <span data-lang="ja">類似ドメイン</span><span data-lang="en" hidden>Lookalike domain</span>
+          </button>
+          <button type="button" data-example="Technocore airdrop: enter your seed phrase to claim">
+            <span data-lang="ja">秘密情報の要求</span><span data-lang="en" hidden>Secret request</span>
+          </button>
+        </div>
+
+        <div class="verify-actions">
+          <button id="analyze-button" class="button primary" type="submit" disabled>
+            <span data-lang="ja">ローカル検証を実行</span>
+            <span data-lang="en" hidden>Run local check</span>
+          </button>
+          <button id="clear-button" class="button" type="button">
+            <span data-lang="ja">クリア</span>
+            <span data-lang="en" hidden>Clear</span>
+          </button>
+        </div>
+      </form>
+
+      <aside class="privacy-panel">
+        <strong>LOCAL-ONLY GUARANTEE</strong><br />
+        <span data-lang="ja">このフォームは送信先を持ちません。JavaScriptは同一originの `status.json` だけを読み、入力URLをfetchしません。</span>
+        <span data-lang="en" hidden>This form has no submission endpoint. JavaScript reads same-origin `status.json` only and never fetches a submitted URL.</span>
+      </aside>
+    </div>
+
+    <section id="result-panel" class="result-panel" aria-live="polite" aria-atomic="false">
+      <div id="result-placeholder" class="result-placeholder">
+        <div>
+          <p class="micro-label">AWAITING INPUT</p>
+          <p data-lang="ja">検証結果と、その理由がここに表示されます。</p>
+          <p data-lang="en" hidden>Your verdict and its evidence will appear here.</p>
+        </div>
+      </div>
+      <div id="result-content" class="result-content" hidden>
+        <div id="verdict-banner" class="verdict-banner">
+          <span id="verdict-confidence" class="micro-label"></span>
+          <h2 id="verdict-title"></h2>
+        </div>
+        <p id="verdict-summary" class="result-summary"></p>
+
+        <div class="result-group">
+          <h3 id="indicator-heading">Reasons</h3>
+          <ul id="indicator-list" class="indicator-list"></ul>
+        </div>
+        <div id="url-group" class="result-group" hidden>
+          <h3 id="url-heading">URLs</h3>
+          <ul id="url-list" class="url-result-list"></ul>
+        </div>
+        <div id="evidence-group" class="result-group" hidden>
+          <h3 id="evidence-heading">Evidence</h3>
+          <ul id="evidence-list" class="evidence-list"></ul>
+        </div>
+        <div class="result-group">
+          <h3 id="limitation-heading">Limits</h3>
+          <ul id="limitation-list" class="limitation-list"></ul>
+        </div>
+        <div class="result-group">
+          <p id="result-dataset" class="result-dataset"></p>
+          <button id="copy-result" type="button" class="button">
+            <span data-lang="ja">JSONをコピー</span><span data-lang="en" hidden>Copy JSON</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    import "../web/verify-page.mjs";
+  </script>
+</Layout>

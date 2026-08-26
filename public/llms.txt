@@ -1,0 +1,37 @@
+# FLOP Sentinel
+
+FLOP Sentinel is an unofficial, evidence-based verifier for FLOP-related sources and claims.
+It is not FLOP Labs, does not establish airdrop eligibility, and never requests a wallet, private key, seed phrase, or recovery phrase.
+
+## Human pages
+
+- /flop-sentinel/ — current readiness dashboard and trust-source graph
+- /flop-sentinel/verify/ — browser-local URL, message, and contract check
+- /flop-sentinel/changes/ — monitored official-source hash-change timeline
+- /flop-sentinel/proof/ — in-browser snapshot, hash-chain, and Ed25519 checkpoint verification
+- /flop-sentinel/methodology/ — deterministic verdict rules and limitations
+
+## Machine-readable data
+
+- /flop-sentinel/status.json — capability states, observation timestamps, evidence URLs, and SHA-256 hashes
+- /flop-sentinel/changes.json — sanitized change events derived from local monitor history
+- /flop-sentinel/sources.json — pinned source register, trust roots, raw snapshot paths, and collection policy
+- /flop-sentinel/verdict-schema.json — JSON Schema for deterministic claim-analysis results
+- /flop-sentinel/feed.xml — Atom feed of official-source change signals
+- /flop-sentinel/proof.json — discovery metadata for the latest manifest and reviewed checkpoint
+- /flop-sentinel/evidence/manifests/index.json — append-only JCS SHA-256 manifest chain index
+- /flop-sentinel/evidence/attestations/index.json — append-only reviewed-checkpoint signature chain index
+
+Each manifest binds exact-byte official-source snapshots plus status.json, changes.json, trust-roots.json, and the monitor report. A reviewed checkpoint is an Ed25519 signature by the displayed did:key. It proves file integrity and control of that DID key, not FLOP endorsement, airdrop eligibility, or an on-chain event.
+
+Automated GitHub Actions observations append unsigned manifests. The proof metadata explicitly reports whether the latest manifest has a reviewed checkpoint. No private key is available to CI.
+
+## Verdicts
+
+- VERIFIED_OFFICIAL_ROOT
+- OFFICIALLY_REFERENCED
+- UNVERIFIED
+- CONFLICTS_WITH_CURRENT_OFFICIAL_STATE
+- HIGH_RISK_PATTERN
+
+The browser verifier does not fetch user-submitted URLs. Treat every result as evidence, not as a safety guarantee.

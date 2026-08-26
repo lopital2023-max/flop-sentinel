@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "type": "flop-sentinel-manifest-index",
+  "entries": [
+    {
+      "sequence": 1,
+      "hash": "6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450",
+      "path": "evidence/manifests/000001-6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450.json",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "createdAt": "2026-08-26T20:01:30.082Z",
+      "previousManifestHash": null
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE_PATH: /flop-sentinel
+      PUBLIC_SITE_URL: https://lopital2023-max.github.io
+      ASTRO_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up pinned Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts
+      - name: Audit repository security boundaries
+        run: npm run security:audit
+      - name: Verify signed evidence without rewriting it
+        run: node src/cli.mjs attest:verify --no-write
+      - name: Run unit and tamper tests
+        run: npm test
+      - name: Build GitHub Pages artifact
+        run: npm run build
+      - name: Verify static artifact
+        run: npm run verify:dist

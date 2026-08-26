@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "type": "flop-sentinel-proof-discovery",
+  "generatedAt": "2026-08-26T20:33:53.071Z",
+  "manifestIndex": "evidence/manifests/index.json",
+  "attestationIndex": "evidence/attestations/index.json",
+  "latest": {
+    "manifest": {
+      "sequence": 1,
+      "hash": "6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450",
+      "path": "evidence/manifests/000001-6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450.json",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "createdAt": "2026-08-26T20:01:30.082Z",
+      "previousManifestHash": null,
+      "sourceCount": 4,
+      "artifactCount": 4
+    },
+    "attestation": {
+      "sequence": 1,
+      "hash": "604a4dd71c7f29b8943a3e51344aae61cc740b07cae4ee4efdb4052cf4c5d536",
+      "path": "evidence/attestations/000001-604a4dd71c7f29b8943a3e51344aae61cc740b07cae4ee4efdb4052cf4c5d536.json",
+      "manifestHash": "6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450",
+      "reviewerDid": "did:key:z6MkrPT8CW8EJhrRN5RZB4d3svmNgFtbrPx8sRWJpPQMZ1fu",
+      "reviewedAt": "2026-08-26T20:01:42.603Z",
+      "previousAttestationHash": null,
+      "algorithm": "Ed25519",
+      "canonicalization": "RFC8785-JCS"
+    }
+  },
+  "verification": {
+    "ok": true,
+    "manifestCount": 1,
+    "attestationCount": 1,
+    "snapshotReferences": 4,
+    "artifactReferences": 4,
+    "latestManifestReviewed": true
+  },
+  "limitation": "Reviewed source-provenance checkpoint; not FLOP endorsement, reward eligibility, or on-chain proof."
+}

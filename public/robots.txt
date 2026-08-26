@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lopital2023-max.github.io/flop-sentinel/sitemap.xml

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "type": "flop-sentinel-reviewed-checkpoint",
+  "payload": {
+    "schemaVersion": 1,
+    "type": "flop-sentinel-reviewed-checkpoint",
+    "manifestHash": "6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450",
+    "manifestPath": "evidence/manifests/000001-6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450.json",
+    "manifestSequence": 1,
+    "reviewedAt": "2026-08-26T20:01:42.603Z",
+    "reviewerDid": "did:key:z6MkrPT8CW8EJhrRN5RZB4d3svmNgFtbrPx8sRWJpPQMZ1fu",
+    "previousAttestationHash": null,
+    "statement": "Reviewed source-provenance checkpoint; not FLOP endorsement, reward eligibility, or on-chain proof."
+  },
+  "proof": {
+    "algorithm": "Ed25519",
+    "canonicalization": "RFC8785-JCS",
+    "signatureValue": "3TR_RWmkj3LfaXzBbMTU67pOg2gS1nhji3pHonHdLi3JO2Y1Vas4UYUGbKdwZ7SyNjFaD9wOtO-e1vZe0euyBQ"
+  }
+}

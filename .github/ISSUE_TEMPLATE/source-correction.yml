@@ -1,0 +1,42 @@
+name: Source correction
+description: Report an outdated source, provenance error, or false classification without including secrets.
+title: "[source] "
+labels: ["source-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        FLOP Sentinel is unofficial. Do not paste private keys, seed phrases, wallet recovery material, personal data, or unpublished exploit details.
+  - type: input
+    id: source
+    attributes:
+      label: Primary source URL
+      description: Use a public HTTPS primary source. The project will not automatically fetch arbitrary issue URLs.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Outdated observation
+        - Incorrect provenance classification
+        - False-positive risk indicator
+        - Missing limitation or disclaimer
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and expected correction
+      description: Explain the correction. Do not include secret or personal material.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I have not included private keys, seeds, recovery phrases, credentials, or unpublished exploit details.
+          required: true

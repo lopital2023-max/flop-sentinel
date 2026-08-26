@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lopital2023-max.github.io/flop-sentinel/verdict-schema.json",
+  "title": "FLOP Sentinel claim-analysis result",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "datasetGeneratedAt",
+    "input",
+    "verdict",
+    "confidence",
+    "summary",
+    "indicators",
+    "urls",
+    "addresses",
+    "evidence",
+    "limitations"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "datasetGeneratedAt": { "type": "string", "format": "date-time" },
+    "input": {
+      "type": "object",
+      "required": ["sha256", "length", "containsSecretRequestLanguage"],
+      "properties": {
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "length": { "type": "integer", "minimum": 1 },
+        "containsSecretRequestLanguage": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "verdict": {
+      "enum": [
+        "VERIFIED_OFFICIAL_ROOT",
+        "OFFICIALLY_REFERENCED",
+        "UNVERIFIED",
+        "CONFLICTS_WITH_CURRENT_OFFICIAL_STATE",
+        "HIGH_RISK_PATTERN"
+      ]
+    },
+    "confidence": { "enum": ["low", "medium", "high"] },
+    "summary": { "type": "string" },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "severity", "message"],
+        "properties": {
+          "code": {
+            "enum": [
+              "INVALID_URL",
+              "INSECURE_HTTP",
+              "URL_USERINFO",
+              "NON_STANDARD_PORT",
+              "IP_LITERAL_HOST",
+              "PUNYCODE_HOST",
+              "MIXED_SCRIPT_HOST",
+              "EMBEDDED_OFFICIAL_HOSTNAME",
+              "LOOKALIKE_OFFICIAL_HOSTNAME",
+              "USER_WRITABLE_OFFICIAL_SERVICE",
+              "UNVERIFIED_URL",
+              "SECRET_MATERIAL_REQUEST",
+              "WALLET_CONNECTION_REQUEST",
+              "UNVERIFIED_CONTRACT_ADDRESS",
+              "CLAIM_CONFLICTS_WITH_CURRENT_SERVICE"
+            ]
+          },
+          "severity": { "enum": ["info", "medium", "high", "critical"] },
+          "message": { "type": "string" },
+          "subject": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "urls": { "type": "array", "items": { "type": "object" } },
+    "addresses": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" }
+    },
+    "evidence": { "type": "array", "items": { "type": "object" } },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "additionalProperties": false
+}

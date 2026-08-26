@@ -1,0 +1,56 @@
+name: Refresh official-source evidence
+
+on:
+  schedule:
+    - cron: "23 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: official-source-monitor
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ASTRO_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up pinned Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts
+      - name: Audit code before making a network observation
+        run: npm run security:audit
+      - name: Reconstruct comparison state from verified public evidence
+        run: node src/cli.mjs monitor:bootstrap
+      - name: Read the four pinned official sources and regenerate public data
+        run: node src/cli.mjs web:data --refresh --evidence-history public/evidence --site-url https://lopital2023-max.github.io/flop-sentinel/
+      - name: Append an unsigned automated observation manifest
+        run: node src/cli.mjs attest:manifest
+      - name: Verify all hashes, chains, and existing reviewed signatures
+        run: node src/cli.mjs attest:verify
+      - name: Run tests after processing external data
+        run: npm test
+      - name: Audit generated public files
+        run: npm run security:audit
+      - name: Stage only generated evidence and feeds
+        run: git add -- public/status.json public/changes.json public/sources.json public/feed.xml public/proof.json public/evidence
+      - name: Commit changed observations without force-pushing
+        run: |
+          if git diff --cached --quiet; then
+            echo "No official-source byte changes to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore(data): refresh official-source evidence"
+            git push origin HEAD:main
+          fi

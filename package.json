@@ -1,0 +1,35 @@
+{
+  "name": "flop-local-agent-toolkit",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-only preparation and official-source monitoring for FLOP and Technocore.",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "setup": "node src/cli.mjs env:check",
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "verify:dist": "node src/verify-dist.mjs",
+    "security:audit": "node scripts/security-audit.mjs",
+    "test:browser": "node e2e/browser-e2e.mjs",
+    "help": "node src/cli.mjs help",
+    "monitor": "node src/cli.mjs monitor",
+    "monitor:bootstrap": "node src/cli.mjs monitor:bootstrap",
+    "status:build": "node src/cli.mjs status:build",
+    "status": "node src/cli.mjs status",
+    "changes:build": "node src/cli.mjs changes:build",
+    "changes": "node src/cli.mjs changes",
+    "web:data": "node src/cli.mjs web:data",
+    "publish:data": "node src/cli.mjs publish:data",
+    "attest:manifest": "node src/cli.mjs attest:manifest",
+    "attest:verify": "node src/cli.mjs attest:verify",
+    "check": "node src/cli.mjs check",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "astro": "7.2.7"
+  }
+}

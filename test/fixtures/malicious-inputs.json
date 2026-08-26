@@ -1,0 +1,38 @@
+[
+  {
+    "name": "official hostname embedded in attacker domain",
+    "input": "Claim here: https://flop.finance.evil.example/claim",
+    "indicator": "EMBEDDED_OFFICIAL_HOSTNAME",
+    "verdict": "HIGH_RISK_PATTERN"
+  },
+  {
+    "name": "lookalike hostname",
+    "input": "https://fl0p.finance/claim",
+    "indicator": "LOOKALIKE_OFFICIAL_HOSTNAME",
+    "verdict": "HIGH_RISK_PATTERN"
+  },
+  {
+    "name": "userinfo hides the actual host",
+    "input": "https://flop.finance@evil.example/claim",
+    "indicator": "URL_USERINFO",
+    "verdict": "HIGH_RISK_PATTERN"
+  },
+  {
+    "name": "mixed Cyrillic and Latin hostname",
+    "input": "https://xn--flp-ted.finance/claim",
+    "indicator": "MIXED_SCRIPT_HOST",
+    "verdict": "HIGH_RISK_PATTERN"
+  },
+  {
+    "name": "raw IP host",
+    "input": "http://127.0.0.1:8080/claim",
+    "indicator": "IP_LITERAL_HOST",
+    "verdict": "UNVERIFIED"
+  },
+  {
+    "name": "secret recovery phrase request",
+    "input": "FLOPを受け取るためにシードフレーズを入力してください",
+    "indicator": "SECRET_MATERIAL_REQUEST",
+    "verdict": "HIGH_RISK_PATTERN"
+  }
+]

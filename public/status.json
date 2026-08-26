@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "name": "FLOP Sentinel",
+    "status": "unofficial",
+    "purpose": "Evidence-based FLOP source and claim verification for people and agents."
+  },
+  "generatedAt": "2026-08-26T20:01:23.388Z",
+  "sourceReportVersion": 1,
+  "readOnlyObservations": true,
+  "disclaimer": [
+    "This is an unofficial community dataset, not an endorsement by FLOP Labs.",
+    "Unconfirmed does not mean fraudulent, and an official origin does not make user-written content trustworthy.",
+    "This dataset does not establish airdrop eligibility or ownership of any token."
+  ],
+  "capabilities": [
+    {
+      "id": "technocore-service",
+      "label": "Technocore Chat / Notes",
+      "state": "available",
+      "detail": "OpenAPI 3.1.0; service 0.9.7",
+      "evidence": [
+        {
+          "sourceId": "technocore-openapi",
+          "url": "https://technocore.chat/openapi.json",
+          "finalUrl": "https://technocore.chat/openapi.json",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "823573a61e433d693130c5e822663a5a426d3df0247fdc99aaa2ae27de49cd79"
+        }
+      ]
+    },
+    {
+      "id": "central-registration",
+      "label": "Central registration",
+      "state": "not-offered-current-service",
+      "detail": "The current Technocore authentication document explicitly says there is nothing to register for.",
+      "evidence": [
+        {
+          "sourceId": "technocore-auth",
+          "url": "https://technocore.chat/auth.md",
+          "finalUrl": "https://technocore.chat/auth.md",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "cb6dbc5139198c1b6bac40e52acbbc8be53174c2ef8b96556fc4bd95d788f091"
+        }
+      ]
+    },
+    {
+      "id": "technocore-claim-token-endpoint",
+      "label": "Technocore claim / token endpoint",
+      "state": "not-offered-current-service",
+      "detail": "The current Technocore authentication document explicitly says this service has no claim or token endpoint.",
+      "evidence": [
+        {
+          "sourceId": "technocore-auth",
+          "url": "https://technocore.chat/auth.md",
+          "finalUrl": "https://technocore.chat/auth.md",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "cb6dbc5139198c1b6bac40e52acbbc8be53174c2ef8b96556fc4bd95d788f091"
+        }
+      ]
+    },
+    {
+      "id": "faucet",
+      "label": "Official faucet",
+      "state": "not-published-in-monitored-sources",
+      "detail": "No faucet endpoint is present in the monitored OpenAPI document; this is not proof that no faucet exists elsewhere.",
+      "evidence": [
+        {
+          "sourceId": "technocore-openapi",
+          "url": "https://technocore.chat/openapi.json",
+          "finalUrl": "https://technocore.chat/openapi.json",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "823573a61e433d693130c5e822663a5a426d3df0247fdc99aaa2ae27de49cd79"
+        }
+      ]
+    },
+    {
+      "id": "testnet-rpc",
+      "label": "FLOP testnet RPC / chain ID",
+      "state": "not-published-in-monitored-sources",
+      "detail": "The monitored sources do not currently establish an RPC URL and chain ID.",
+      "evidence": [
+        {
+          "sourceId": "technocore-openapi",
+          "url": "https://technocore.chat/openapi.json",
+          "finalUrl": "https://technocore.chat/openapi.json",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "823573a61e433d693130c5e822663a5a426d3df0247fdc99aaa2ae27de49cd79"
+        },
+        {
+          "sourceId": "technocore-auth",
+          "url": "https://technocore.chat/auth.md",
+          "finalUrl": "https://technocore.chat/auth.md",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "cb6dbc5139198c1b6bac40e52acbbc8be53174c2ef8b96556fc4bd95d788f091"
+        },
+        {
+          "sourceId": "flop-site",
+          "url": "https://flop.finance/",
+          "finalUrl": "https://flop.finance/",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "4981b05c81cbb4610fd1948e05571901aac7007f8d682f80525e7a7fbfa45108"
+        },
+        {
+          "sourceId": "flop-github-repos",
+          "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+          "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "2bce0295f2a51a52a925ce3ba08e53d22b547d75348f2204e1fb1a75c00f51d1"
+        }
+      ]
+    },
+    {
+      "id": "official-contracts",
+      "label": "Official FLOP contract addresses",
+      "state": "not-published-in-monitored-sources",
+      "detail": "No address is treated as official unless a pinned official source publishes it.",
+      "evidence": [
+        {
+          "sourceId": "technocore-openapi",
+          "url": "https://technocore.chat/openapi.json",
+          "finalUrl": "https://technocore.chat/openapi.json",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "823573a61e433d693130c5e822663a5a426d3df0247fdc99aaa2ae27de49cd79"
+        },
+        {
+          "sourceId": "technocore-auth",
+          "url": "https://technocore.chat/auth.md",
+          "finalUrl": "https://technocore.chat/auth.md",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "cb6dbc5139198c1b6bac40e52acbbc8be53174c2ef8b96556fc4bd95d788f091"
+        },
+        {
+          "sourceId": "flop-site",
+          "url": "https://flop.finance/",
+          "finalUrl": "https://flop.finance/",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "4981b05c81cbb4610fd1948e05571901aac7007f8d682f80525e7a7fbfa45108"
+        },
+        {
+          "sourceId": "flop-github-repos",
+          "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+          "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+          "observedAt": "2026-08-26T20:01:23.388Z",
+          "sha256": "2bce0295f2a51a52a925ce3ba08e53d22b547d75348f2204e1fb1a75c00f51d1"
+        }
+      ]
+    }
+  ],
+  "officialContracts": [],
+  "sources": [
+    {
+      "id": "technocore-openapi",
+      "url": "https://technocore.chat/openapi.json",
+      "finalUrl": "https://technocore.chat/openapi.json",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "status": "changed",
+      "sha256": "823573a61e433d693130c5e822663a5a426d3df0247fdc99aaa2ae27de49cd79",
+      "error": null
+    },
+    {
+      "id": "technocore-auth",
+      "url": "https://technocore.chat/auth.md",
+      "finalUrl": "https://technocore.chat/auth.md",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "status": "unchanged",
+      "sha256": "cb6dbc5139198c1b6bac40e52acbbc8be53174c2ef8b96556fc4bd95d788f091",
+      "error": null
+    },
+    {
+      "id": "flop-site",
+      "url": "https://flop.finance/",
+      "finalUrl": "https://flop.finance/",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "status": "unchanged",
+      "sha256": "4981b05c81cbb4610fd1948e05571901aac7007f8d682f80525e7a7fbfa45108",
+      "error": null
+    },
+    {
+      "id": "flop-github-repos",
+      "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "observedAt": "2026-08-26T20:01:23.388Z",
+      "status": "changed",
+      "sha256": "2bce0295f2a51a52a925ce3ba08e53d22b547d75348f2204e1fb1a75c00f51d1",
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "roots": [
+    {
+      "id": "flop-site",
+      "url": "https://flop.finance/",
+      "scope": "exact-url",
+      "trust": "official-root"
+    },
+    {
+      "id": "technocore-auth",
+      "url": "https://technocore.chat/auth.md",
+      "scope": "exact-url",
+      "trust": "official-root"
+    },
+    {
+      "id": "technocore-openapi",
+      "url": "https://technocore.chat/openapi.json",
+      "scope": "exact-url",
+      "trust": "official-root"
+    },
+    {
+      "id": "flop-github-organization",
+      "url": "https://github.com/flop-labs",
+      "scope": "path-prefix",
+      "trust": "official-namespace"
+    },
+    {
+      "id": "flop-x-account",
+      "url": "https://x.com/flop_labs",
+      "scope": "path-prefix",
+      "trust": "officially-referenced"
+    }
+  ],
+  "untrustedHostedZones": [
+    {
+      "id": "technocore-rooms",
+      "origin": "https://technocore.chat",
+      "pathPrefix": "/r/",
+      "reason": "Technocore rooms are world-writable and their content is not an official statement."
+    },
+    {
+      "id": "technocore-notes",
+      "origin": "https://technocore.chat",
+      "pathPrefix": "/kv/",
+      "reason": "Technocore notes are user-writable and their content is not an official statement."
+    }
+  ]
+}
