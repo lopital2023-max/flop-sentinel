@@ -334,12 +334,14 @@ MVPでは、利用者が入力したURLをサーバーから直接取得しま�
 
 ### 第4段階：公開
 
-- GitHub公開リポジトリ
-- 静的ホスティング
-- 定期監視
-- `llms.txt` とJSON API
-- 公開脅威モデル
-- 通報用GitHub Issue template
+- GitHub公開リポジトリ（実装・公開済み）
+- GitHub Pagesによる静的ホスティング（実装・公開検証済み）
+- 毎日02:23 UTCの定期監視（実装済み。固定4ソースのみ）
+- `llms.txt`、Atom feed、JSON API（実装・公開済み）
+- 公開脅威モデルと自動security audit（実装済み）
+- 通報用GitHub Issue templateとPrivate vulnerability reporting（実装・有効化済み）
+
+公開先は `https://lopital2023-max.github.io/flop-sentinel/`、sourceは `https://github.com/lopital2023-max/flop-sentinel` です。GitHub Actionsは最小権限で、公式Actionをrelease commitの完全なSHAへ固定しています。定期監視にはprivate keyやKeychain credentialを渡さず、自動観測manifestと人間が確認したEd25519署名checkpointを分離します。
 
 ## 完成条件
 
