@@ -9,6 +9,14 @@
       "observedAt": "2026-08-26T20:01:23.388Z",
       "createdAt": "2026-08-26T20:01:30.082Z",
       "previousManifestHash": null
+    },
+    {
+      "sequence": 2,
+      "hash": "7acf0d1d884fb3c2c804c1b4efad0f4da3ccd793e932e7af2dbaef23595bad07",
+      "path": "evidence/manifests/000002-7acf0d1d884fb3c2c804c1b4efad0f4da3ccd793e932e7af2dbaef23595bad07.json",
+      "observedAt": "2026-08-26T20:48:35.365Z",
+      "createdAt": "2026-08-26T20:48:36.210Z",
+      "previousManifestHash": "6431acfa5983253b757205a8c6a29bac2d5f9a7f93210ee2f0abd2929a57f450"
     }
   ]
 }
