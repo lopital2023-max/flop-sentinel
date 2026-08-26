@@ -97,7 +97,7 @@ npm run monitor
 .local/monitor-history.jsonl  実行履歴
 ```
 
-第3段階では、取得したexact bytesも `public/evidence/snapshots/` にSHA-256名で保存します。これらは公開検証用artifactであり、HTMLとして描画せず、hosting headerで`application/octet-stream`として配信します。
+第3段階では、取得したexact bytesも `public/evidence/snapshots/` にSHA-256名で保存します。これらは公開検証用artifactであり、サイト自身はHTMLとして描画しません。GitHub Pages上では`.snapshot`が`application/octet-stream`として配信されることを実測していますが、custom response headerはPagesでは保証されません。
 
 保存せず一度だけ確認する場合:
 

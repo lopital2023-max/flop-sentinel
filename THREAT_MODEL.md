@@ -42,7 +42,7 @@ GitHub Actions ── unsigned observations only ── GitHub Pages
 1. 利用者が貼ったURLは`URL`として構文解析するだけで、DNS lookup、HTTP request、redirect追跡を行いません。
 2. 監視collectorはコードと設定の両方に固定した4 URLだけをGETし、redirect先hostも固定します。
 3. 取得したHTMLは正規化用の文字列として扱い、DOMへ挿入せず、shell、`eval`、module loaderへ渡しません。
-4. raw snapshotはSHA-256計算対象のbytesとしてのみ読み、`.snapshot`拡張子、attachment、`nosniff`で配信します。
+4. raw snapshotはSHA-256計算対象のbytesとしてのみ読み、`.snapshot`拡張子で保存します。GitHub Pages上の実測Content-Typeは`application/octet-stream`ですが、Pagesはrepositoryのcustom response headerを保証しないため、artifactを安全なHTMLだと仮定して開かない運用も必要です。
 5. 画面への動的表示は`textContent`とAstroのescapeを利用し、`innerHTML`、`set:html`、`document.write`を使いません。
 6. production codeで起動するOS programは、macOS Keychain用の固定path `/usr/bin/security`だけです。shellを介さず固定subcommandと検証済み引数を配列で渡します。
 7. TechnocoreへのPOSTは明示的な`--execute-external-write`が必要で、送信originを`https://technocore.chat`へ固定します。GitHub Actionsからは実行しません。
