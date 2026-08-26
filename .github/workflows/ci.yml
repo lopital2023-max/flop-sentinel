@@ -1,7 +1,7 @@
-name: CI
+name: Manual CI (trusted ref only)
 
 on:
-  pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read

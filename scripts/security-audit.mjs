@@ -94,9 +94,17 @@ try {
 for (const file of workflowFiles) {
   const contents = await readFile(path.join(workflowDirectory, file), "utf8");
   assert.doesNotMatch(contents, /pull_request_target|secrets\.|\beval\b|\bcurl\b|\bwget\b/u, `${file} has a high-risk workflow construct`);
+  assert.doesNotMatch(
+    contents,
+    /^\s*pull_request\s*:/mu,
+    `${file} executes repository-controlled code for an untrusted pull request event`,
+  );
   for (const match of contents.matchAll(/^\s*-\s+uses:\s*([^\s#]+)(?:\s+#.*)?$/gmu)) {
     assert.match(match[1], /^actions\/[a-z0-9-]+@[a-f0-9]{40}$/u, `${file} action is not pinned to a full SHA`);
   }
 }
+
+const manualCi = await readFile(path.join(workflowDirectory, "ci.yml"), "utf8");
+assert.match(manualCi, /^\s*workflow_dispatch\s*:/mu, "CI must require an explicit trusted-ref dispatch");
 
 console.log(`Security audit passed: ${sourceFiles.length} source files, ${publicFiles.length} public files, ${workflowFiles.length} workflows.`);

@@ -238,7 +238,7 @@ Reviewer DID:   did:key:z6MkrPT8CW8EJhrRN5RZB4d3svmNgFtbrPx8sRWJpPQMZ1fu
 
 3つのGitHub Actions workflowを用意しています。
 
-- `ci.yml` — pull requestをread-only tokenで検証
+- `ci.yml` — review済みrefだけをread-only tokenで手動検証（外部fork PRは自動実行しない）
 - `pages.yml` — `main`の検証済み静的artifactをGitHub Pagesへ配置
 - `monitor.yml` — 毎日02:23 UTCに固定4ソースをGETし、公開証跡だけをcommit
 

@@ -10,7 +10,9 @@ FLOP Sentinelは非公式の安全ツールです。変更は「断定を増や�
 4. 新しいnetwork接続先、dependency、GitHub Action、wallet連携は、脅威モデルとテストを同時に更新してください。
 5. trust root変更は一次sourceの根拠を示し、管理者レビューを必要とします。
 
-Pull requestのCIにはrepository write権限、DID private key、Keychain、deployment credentialを渡しません。
+外部forkのpull requestでは、提出者が変更できるtest、package script、workflowを自動実行しません。管理者は最初にGitHub上で差分を静的レビューし、安全性を確認した変更だけをrepository管理下のbranchへ取り込んでから、手動CIを実行します。未確認のfork branchをローカルcheckoutしてcommandを実行しないでください。
+
+手動CIにはrepository write権限、DID private key、Keychain、deployment credentialを渡しません。GitHub側でもすべてのexternal contributorについてfork workflowの実行前承認を要求します。
 
 ## 証跡
 

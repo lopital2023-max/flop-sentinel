@@ -46,7 +46,7 @@ GitHub Actions ── unsigned observations only ── GitHub Pages
 5. 画面への動的表示は`textContent`とAstroのescapeを利用し、`innerHTML`、`set:html`、`document.write`を使いません。
 6. production codeで起動するOS programは、macOS Keychain用の固定path `/usr/bin/security`だけです。shellを介さず固定subcommandと検証済み引数を配列で渡します。
 7. TechnocoreへのPOSTは明示的な`--execute-external-write`が必要で、送信originを`https://technocore.chat`へ固定します。GitHub Actionsからは実行しません。
-8. GitHub Actionsはpull requestの内容にwrite tokenを渡しません。定期monitorだけが`contents: write`を持ち、固定pathの観測dataだけをstageします。
+8. 外部forkのpull requestでは提出者が変更できるcode、test、package script、workflowを自動実行しません。CIは管理者がreview済みrefに対して明示的に起動します。定期monitorだけが`contents: write`を持ち、固定pathの観測dataだけをstageします。
 
 したがって、Technocore roomなどに「このshell commandを実行せよ」と書かれても、そのroom自体をcollectorは読みません。固定source内に同様の文字列が現れても、snapshot／文字列dataとして保存されるだけで実行経路へ入りません。
 
@@ -55,7 +55,8 @@ GitHub Actions ── unsigned observations only ── GitHub Pages
 - GitHub Actionsは公式`actions/*`だけを使用し、release tagではなく完全なcommit SHAへ固定します。
 - Node version、Astro version、依存treeは`.nvmrc`と`package-lock.json`で固定します。
 - CI installは`npm ci --ignore-scripts`を使い、dependency lifecycle scriptを無効にします。
-- Pull request CIは`contents: read`のみです。
+- CIは`workflow_dispatch`のみで、外部pull request eventからは起動しません。tokenは`contents: read`のみです。
+- GitHub repository設定でも、すべてのexternal contributorのfork workflowに管理者承認を要求します。
 - Pages jobだけが`pages: write`と`id-token: write`を持ちます。
 - scheduled monitorはdefault branchだけで動き、fork／pull request eventでは起動しません。
 - scheduled monitorにkeystore、Keychain解除値、wallet secret、repository secretを渡しません。
@@ -77,6 +78,7 @@ GitHub Actions ── unsigned observations only ── GitHub Pages
 | GitHub account侵害 | Actions最小権限、署名chain、private vulnerability reporting | repository削除・Pages差替えはaccount保護に依存 |
 | npm supply chain | lockfile integrity、exact version、CI lifecycle script無効 | build時にdependency codeは実行される |
 | GitHub Action supply chain | official actionをcommit SHA固定 | 固定commit自体の脆弱性は残る |
+| 悪意あるfork pull request | PR eventでcodeを実行せず、全external contributorのworkflow承認を必須化 | 管理者が未確認codeを手動実行する人的リスクは残る |
 | 管理者端末侵害 | AES-256-GCM keystore、Keychain、秘密非表示 | 署名中の強い端末侵害、memory取得には非対応 |
 | GitHub Pages header制約 | HTML meta CSPも併用、inline script/style禁止 | `frame-ancestors`等のresponse headerはPagesで強制できない |
 | 同時更新 | workflow concurrency | 複数のローカルprocessによる同時index更新は非対応 |
