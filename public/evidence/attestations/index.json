@@ -10,6 +10,15 @@
       "reviewerDid": "did:key:z6MkrPT8CW8EJhrRN5RZB4d3svmNgFtbrPx8sRWJpPQMZ1fu",
       "reviewedAt": "2026-08-26T20:01:42.603Z",
       "previousAttestationHash": null
+    },
+    {
+      "sequence": 2,
+      "hash": "465ac9fd563229abf8ccd4ad44c0b60b15d920c05538f956365cde04e2319ea5",
+      "path": "evidence/attestations/000002-465ac9fd563229abf8ccd4ad44c0b60b15d920c05538f956365cde04e2319ea5.json",
+      "manifestHash": "7acf0d1d884fb3c2c804c1b4efad0f4da3ccd793e932e7af2dbaef23595bad07",
+      "reviewerDid": "did:key:z6MkrPT8CW8EJhrRN5RZB4d3svmNgFtbrPx8sRWJpPQMZ1fu",
+      "reviewedAt": "2026-08-26T20:49:37.884Z",
+      "previousAttestationHash": "604a4dd71c7f29b8943a3e51344aae61cc740b07cae4ee4efdb4052cf4c5d536"
     }
   ]
 }
