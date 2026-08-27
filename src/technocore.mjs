@@ -96,6 +96,79 @@ async function discardResponseBody(response) {
   if (response.body?.cancel) await response.body.cancel();
 }
 
+async function readBoundedResponseText(response, maxBytes = 1024 * 1024) {
+  const declaredLength = Number(response.headers?.get?.("content-length"));
+  if (Number.isFinite(declaredLength) && declaredLength > maxBytes) {
+    await discardResponseBody(response);
+    return null;
+  }
+
+  if (typeof response.body?.getReader === "function") {
+    const reader = response.body.getReader();
+    const chunks = [];
+    let receivedBytes = 0;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      receivedBytes += value.byteLength;
+      if (receivedBytes > maxBytes) {
+        await reader.cancel();
+        return null;
+      }
+      chunks.push(Buffer.from(value));
+    }
+    return Buffer.concat(chunks, receivedBytes).toString("utf8");
+  }
+
+  if (typeof response.text !== "function") {
+    await discardResponseBody(response);
+    return null;
+  }
+
+  const body = await response.text();
+  if (Buffer.byteLength(body, "utf8") > maxBytes) return null;
+  return body;
+}
+
+async function extractSignedMessageReceipt(response, { payload, room }) {
+  const contentType = response.headers?.get?.("content-type") ?? "";
+  if (!contentType.toLowerCase().includes("application/json")) {
+    await discardResponseBody(response);
+    return null;
+  }
+
+  const rawBody = await readBoundedResponseText(response);
+  if (rawBody === null) return null;
+
+  let envelope;
+  try {
+    envelope = JSON.parse(rawBody);
+  } catch {
+    return null;
+  }
+
+  if (envelope?.room !== room || !Array.isArray(envelope.messages)) return null;
+  const matches = envelope.messages.filter((message) => (
+    message?.from === payload.did
+    && String(message?.nonce) === payload.nonce
+    && message?.text === payload.text
+    && Number.isSafeInteger(message?.seq)
+    && message.seq >= 0
+    && typeof message?.ts === "string"
+  ));
+  if (matches.length !== 1) return null;
+
+  const [message] = matches;
+  return {
+    room,
+    seq: message.seq,
+    ts: message.ts,
+    from: message.from,
+    nonce: payload.nonce,
+    text: message.text,
+  };
+}
+
 export async function setPublicNote({
   namespace,
   key,
@@ -169,7 +242,7 @@ export async function sendSignedMessage({
       signal: controller.signal,
       headers: {
         "content-type": "application/json",
-        accept: "text/plain, application/json",
+        accept: "application/json",
       },
       body: JSON.stringify({
         did: payload.did,
@@ -178,11 +251,12 @@ export async function sendSignedMessage({
         text: payload.text,
       }),
     });
-    await discardResponseBody(response);
     if (!response.ok) {
+      await discardResponseBody(response);
       throw new Error(`Technocore write failed (HTTP ${response.status})`);
     }
-    return { status: response.status };
+    const receipt = await extractSignedMessageReceipt(response, { payload, room });
+    return { status: response.status, receipt };
   } finally {
     clearTimeout(timeout);
   }

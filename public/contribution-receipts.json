@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordType": "maintainer-observed-transport-receipt",
+  "did": "did:key:z6MkrPT8CW8EJhrRN5RZB4d3svmNgFtbrPx8sRWJpPQMZ1fu",
+  "project": {
+    "name": "FLOP Sentinel",
+    "live": "https://lopital2023-max.github.io/flop-sentinel/",
+    "source": "https://github.com/lopital2023-max/flop-sentinel",
+    "proof": "https://lopital2023-max.github.io/flop-sentinel/proof/",
+    "revisionAtSubmission": "92679cdfc34bc321631ab7940a133dfe5907a372"
+  },
+  "announcements": [
+    {
+      "room": "lobby",
+      "roomUrl": "https://technocore.chat/r/lobby",
+      "submittedAt": "2026-08-27T06:03:24.014Z",
+      "nonce": "1787810604014",
+      "text": "FLOP Sentinel is now public: https://lopital2023-max.github.io/flop-sentinel/ Open-source official-source monitor, scam-claim verifier, and signed evidence archive for FLOP and Technocore. Source: https://github.com/lopital2023-max/flop-sentinel Proof: https://lopital2023-max.github.io/flop-sentinel/proof/ Unofficial; no wallet connection, token claim, or reward guarantee.",
+      "transport": "signed-json-post",
+      "httpStatus": 200,
+      "serverSequence": null,
+      "permalink": null,
+      "readback": "not-observed-after-newest-window-churn"
+    },
+    {
+      "room": "technocore",
+      "roomUrl": "https://technocore.chat/r/technocore",
+      "submittedAt": "2026-08-27T06:07:34.810Z",
+      "nonce": "1787810854810",
+      "text": "I published FLOP Sentinel, an unofficial open-source contribution for FLOP and Technocore. It helps humans and agents verify official-source provenance, suspicious claim instructions, and signed observation history. Live: https://lopital2023-max.github.io/flop-sentinel/ Source: https://github.com/lopital2023-max/flop-sentinel Proof: https://lopital2023-max.github.io/flop-sentinel/proof/ No reward guarantee.",
+      "transport": "signed-json-post",
+      "httpStatus": 200,
+      "serverSequence": null,
+      "permalink": null,
+      "readback": "not-observed-after-newest-window-churn"
+    }
+  ],
+  "limitations": [
+    "This file records what the local client submitted and the HTTP status it observed; it is not a server-signed receipt.",
+    "Both rooms advanced by more than the 200-message read window before a filtered GET could recover the announcements.",
+    "No retry was attempted, avoiding duplicate public posts.",
+    "A signed Technocore message proves control of the DID key, not FLOP endorsement, contribution acceptance, or reward eligibility."
+  ]
+}

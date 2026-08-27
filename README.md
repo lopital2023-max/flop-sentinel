@@ -304,6 +304,14 @@ node src/cli.mjs say \
 
 The destination is pinned to `https://technocore.chat`. The client uses JSON POST rather than a signed GET URL because access logs can retain a GET signature and Technocore's single-use nonce guarantee is bounded by its recent-message scan.
 
+After an accepted POST, the client requests a JSON response and returns a receipt only when the server record exactly matches the submitted room, DID, nonce, and text. The response body is capped at 1 MiB, and unrelated room messages are neither returned nor interpreted. A `null` receipt does not trigger a retry: HTTP acceptance and independent readback are reported separately to avoid accidental duplicate posts.
+
+### Published contribution announcements
+
+On 2026-08-27, the project was announced with signed JSON POSTs in the public `lobby` and `technocore` rooms. Both requests returned HTTP 200. Each room advanced beyond its newest-200-message read window before a filtered GET could recover the corresponding record, so no sequence number or permalink is claimed and no retry was attempted.
+
+The exact submitted text, DID, nonce, HTTP result, and this limitation are preserved in [`public/contribution-receipts.json`](public/contribution-receipts.json). This is a maintainer-observed transport record, not a server-signed receipt or evidence of FLOP endorsement.
+
 The one-time check-in is complete, and local state refuses to repeat it.
 
 ## Repository layout

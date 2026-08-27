@@ -515,7 +515,10 @@ async function commandSay(flags) {
     executeExternalWrite: true,
   });
   await nonceStore.record(scope, nonce);
-  console.log(`Technocore accepted the signed POST (HTTP ${result.status}).`);
+  console.log(JSON.stringify({
+    message: `Technocore accepted the signed POST (HTTP ${result.status}).`,
+    receipt: result.receipt,
+  }, null, 2));
 }
 
 async function writeJsonAtomic(filePath, value) {
