@@ -1,19 +1,19 @@
 # Contributing
 
-FLOP Sentinelは非公式の安全ツールです。変更は「断定を増やす」より「根拠と限界を明確にする」方向を優先します。
+FLOP Sentinel is an unofficial safety tool. Changes should make evidence and limitations clearer rather than make stronger unsupported claims.
 
-## Pull request
+## Pull requests
 
-1. Node.js 22を使用してください。
-2. `npm ci --ignore-scripts`、`npm test`、`npm run build`、`npm run verify:dist`を実行してください。
-3. 利用者入力や監視responseをshell、`eval`、HTMLとして実行する処理を追加しないでください。
-4. 新しいnetwork接続先、dependency、GitHub Action、wallet連携は、脅威モデルとテストを同時に更新してください。
-5. trust root変更は一次sourceの根拠を示し、管理者レビューを必要とします。
+1. Use Node.js 22.
+2. Run `npm ci --ignore-scripts`, `npm test`, `npm run build`, and `npm run verify:dist`.
+3. Do not add any path that executes user input or monitored responses as shell commands, JavaScript, or HTML.
+4. Update the threat model and tests whenever adding a network destination, dependency, GitHub Action, or wallet integration.
+5. A trust-root change must cite a primary source and receive maintainer review.
 
-外部forkのpull requestでは、提出者が変更できるtest、package script、workflowを自動実行しません。管理者は最初にGitHub上で差分を静的レビューし、安全性を確認した変更だけをrepository管理下のbranchへ取り込んでから、手動CIを実行します。未確認のfork branchをローカルcheckoutしてcommandを実行しないでください。
+Code, tests, package scripts, and workflows from external fork pull requests are not executed automatically. A maintainer first reviews the diff on GitHub, copies only reviewed changes to a repository-controlled branch, and then runs the manual CI workflow. Never check out and execute an unreviewed fork branch locally.
 
-手動CIにはrepository write権限、DID private key、Keychain、deployment credentialを渡しません。GitHub側でもすべてのexternal contributorについてfork workflowの実行前承認を要求します。
+Manual CI receives no repository write permission, DID private key, Keychain material, or deployment credential. Repository settings also require approval before any workflow from an external contributor can run.
 
-## 証跡
+## Evidence
 
-CIが作るmanifestは自動観測であり、review済み署名ではありません。Ed25519 reviewed checkpointは管理者がローカルで観測内容を確認した後、明示的に署名します。署名を要求するために秘密鍵やseedの提出を依頼してはいけません。
+A manifest created by automation is an automated observation, not a reviewed signature. A maintainer creates an Ed25519 reviewed checkpoint only after inspecting the observation. Never ask anyone to disclose a private key or seed in order to obtain a signature.

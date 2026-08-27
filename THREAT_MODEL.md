@@ -1,18 +1,18 @@
 # FLOP Sentinel threat model
 
-最終更新: 2026-08-27
+Last updated: 2026-08-27
 
-## 守るもの
+## Assets
 
-- 利用者のwallet、seed、private key、個人情報
-- 管理者のTechnocore用Ed25519秘密鍵とmacOS Keychain解除値
-- 公式sourceの観測履歴、snapshot、manifest、reviewed checkpointの完全性
-- 公開サイトとJSON APIを閲覧する利用者のブラウザ
-- GitHub repositoryとPages deploymentの完全性
+- User wallets, seeds, private keys, and personal information
+- The maintainer's Technocore Ed25519 private key and macOS Keychain unlock value
+- Integrity of official-source observations, snapshots, manifests, and reviewed checkpoints
+- Browsers that consume the public website and JSON APIs
+- Integrity of the GitHub repository and Pages deployment
 
-FLOP Sentinelはwalletを接続せず、利用者に秘密情報を入力させません。Technocore用DID鍵は暗号資産walletとは別物です。
+FLOP Sentinel does not connect a wallet or ask users for secret material. The Technocore DID key is separate from every cryptocurrency wallet.
 
-## 信頼境界
+## Trust boundaries
 
 ```text
 user text / URL ── local parser only ── verdict
@@ -28,61 +28,62 @@ local encrypted keystore ── macOS Keychain unlock ── Ed25519 checkpoint
 GitHub Actions ── unsigned observations only ── GitHub Pages
 ```
 
-## 想定する攻撃者
+## Threat actors
 
-- 類似ドメイン、userinfo、Punycode、偽contractを貼る第三者
-- Technocoreのworld-writable room／noteへ悪意ある文章やcommandを書く第三者
-- 監視対象のHTML、JSON、repository descriptionへ命令文やscript文字列を混入できる第三者
-- 依存packageやGitHub Actionを侵害するsupply-chain攻撃者
-- 公開artifactを書き換えようとするhosting／repository攻撃者
-- 管理者端末へ侵入し、keystoreまたはKeychainへアクセスする攻撃者
+- A third party posting a lookalike domain, URL user-info trick, Punycode name, or fake contract
+- A third party placing malicious text or commands in a world-writable Technocore room or note
+- An attacker able to insert instructions or scripts into monitored HTML, JSON, or a repository description
+- A supply-chain attacker compromising an npm dependency or GitHub Action
+- A hosting or repository attacker attempting to replace public artifacts
+- An attacker compromising the maintainer workstation and accessing the keystore or Keychain
 
-## 「外部の命令を実行しない」ための制御
+## Controls against executing external instructions
 
-1. 利用者が貼ったURLは`URL`として構文解析するだけで、DNS lookup、HTTP request、redirect追跡を行いません。
-2. 監視collectorはコードと設定の両方に固定した4 URLだけをGETし、redirect先hostも固定します。
-3. 取得したHTMLは正規化用の文字列として扱い、DOMへ挿入せず、shell、`eval`、module loaderへ渡しません。
-4. raw snapshotはSHA-256計算対象のbytesとしてのみ読み、`.snapshot`拡張子で保存します。GitHub Pages上の実測Content-Typeは`application/octet-stream`ですが、Pagesはrepositoryのcustom response headerを保証しないため、artifactを安全なHTMLだと仮定して開かない運用も必要です。
-5. 画面への動的表示は`textContent`とAstroのescapeを利用し、`innerHTML`、`set:html`、`document.write`を使いません。
-6. production codeで起動するOS programは、macOS Keychain用の固定path `/usr/bin/security`だけです。shellを介さず固定subcommandと検証済み引数を配列で渡します。
-7. TechnocoreへのPOSTは明示的な`--execute-external-write`が必要で、送信originを`https://technocore.chat`へ固定します。GitHub Actionsからは実行しません。
-8. 外部forkのpull requestでは提出者が変更できるcode、test、package script、workflowを自動実行しません。CIは管理者がreview済みrefに対して明示的に起動します。定期monitorだけが`contents: write`を持ち、固定pathの観測dataだけをstageします。
+1. A submitted URL is parsed as a `URL` only. The verifier performs no DNS lookup, HTTP request, or redirect traversal.
+2. The collector fetches only four URLs pinned in both code and configuration, and every redirect host is allowlisted.
+3. Retrieved HTML is a normalization string. It is never inserted into the DOM or passed to a shell, `eval`, or module loader.
+4. Raw snapshots are read only as SHA-256 input and stored with a `.snapshot` extension. Their measured GitHub Pages content type is `application/octet-stream`, but Pages does not guarantee repository-defined response headers; never assume an artifact is safe HTML and open it as such.
+5. Dynamic UI output uses `textContent` and Astro escaping. The project contains no `innerHTML`, `set:html`, or `document.write` path.
+6. The only OS program started by production code is the fixed macOS Keychain path `/usr/bin/security`. It receives fixed subcommands and validated argument arrays without a shell.
+7. A Technocore POST requires `--execute-external-write` and is pinned to `https://technocore.chat`. GitHub Actions never performs this operation.
+8. External fork pull requests do not execute contributor-controlled code, tests, package scripts, or workflows. CI runs only by explicit dispatch on a reviewed ref. Only the scheduled monitor receives `contents: write`, and it stages fixed generated paths.
 
-したがって、Technocore roomなどに「このshell commandを実行せよ」と書かれても、そのroom自体をcollectorは読みません。固定source内に同様の文字列が現れても、snapshot／文字列dataとして保存されるだけで実行経路へ入りません。
+Consequently, a message in a Technocore room that says "run this command" is never read by the collector. If similar text appears in a pinned official response, it remains snapshot data and never reaches an execution path.
 
-## CI/CDの制御
+## CI/CD controls
 
-- GitHub Actionsは公式`actions/*`だけを使用し、release tagではなく完全なcommit SHAへ固定します。
-- Node version、Astro version、依存treeは`.nvmrc`と`package-lock.json`で固定します。
-- CI installは`npm ci --ignore-scripts`を使い、dependency lifecycle scriptを無効にします。
-- CIは`workflow_dispatch`のみで、外部pull request eventからは起動しません。tokenは`contents: read`のみです。
-- GitHub repository設定でも、すべてのexternal contributorのfork workflowに管理者承認を要求します。
-- Pages jobだけが`pages: write`と`id-token: write`を持ちます。
-- scheduled monitorはdefault branchだけで動き、fork／pull request eventでは起動しません。
-- scheduled monitorにkeystore、Keychain解除値、wallet secret、repository secretを渡しません。
-- 自動観測manifestは署名されません。reviewed checkpointは管理者端末で明示フラグを付けた場合だけ作成します。
+- Every GitHub Action is an official `actions/*` project pinned to a complete release commit SHA.
+- `.nvmrc` and `package-lock.json` pin Node.js, Astro, and the dependency tree.
+- `npm ci --ignore-scripts` disables dependency lifecycle scripts.
+- CI is `workflow_dispatch` only, has `contents: read`, and never runs on an external pull-request event.
+- Repository settings require approval for workflows from every external contributor.
+- Only the Pages job has `pages: write` and `id-token: write`.
+- The scheduled monitor runs only from the default branch, not a fork or pull request.
+- The monitor receives no keystore, Keychain unlock value, wallet secret, or repository secret.
+- Automated manifests are explicitly unsigned. A reviewed checkpoint is created only on the maintainer workstation with an acknowledgement flag.
 
-## 証跡が保証する範囲
+## What evidence proves
 
-- SHA-256はmanifestが参照するexact bytesの変更を検出します。
-- `previousManifestHash`と`previousAttestationHash`は公開履歴の途中変更を検出します。
-- Ed25519 signatureは表示DIDに対応するprivate keyでpayloadが署名されたことを検証します。
+- SHA-256 detects a change to exact bytes referenced by a manifest.
+- `previousManifestHash` and `previousAttestationHash` expose changes that break the published chain.
+- An Ed25519 signature proves that the private key corresponding to the displayed DID signed the canonical payload.
 
-証跡は、公式sourceの内容が真実・安全であること、FLOP Labsの承認、airdrop資格、on-chain状態を保証しません。repository全体を削除して別履歴へ置換できる権限者への対抗には、第三者mirrorや外部timestampが別途必要です。
+Evidence does not prove that an official source is truthful or uncompromised, that FLOP Labs endorsed this project, that anyone qualifies for an airdrop, or that an on-chain event occurred. A repository owner who can delete the entire repository can replace its history; resistance to that threat requires an independent mirror or external timestamp.
 
-## 残余リスク
+## Residual risks
 
-| リスク | 現在の低減策 | 残る限界 |
+| Risk | Current mitigation | Remaining limitation |
 |---|---|---|
-| 公式origin自体の侵害 | hash変化を記録し、最新観測とreview済み観測を区別 | 侵害された内容の真偽は自動判定できない |
-| GitHub account侵害 | Actions最小権限、署名chain、private vulnerability reporting | repository削除・Pages差替えはaccount保護に依存 |
-| npm supply chain | lockfile integrity、exact version、CI lifecycle script無効 | build時にdependency codeは実行される |
-| GitHub Action supply chain | official actionをcommit SHA固定 | 固定commit自体の脆弱性は残る |
-| 悪意あるfork pull request | PR eventでcodeを実行せず、全external contributorのworkflow承認を必須化 | 管理者が未確認codeを手動実行する人的リスクは残る |
-| 管理者端末侵害 | AES-256-GCM keystore、Keychain、秘密非表示 | 署名中の強い端末侵害、memory取得には非対応 |
-| GitHub Pages header制約 | HTML meta CSPも併用、inline script/style禁止 | `frame-ancestors`等のresponse headerはPagesで強制できない |
-| 同時更新 | workflow concurrency | 複数のローカルprocessによる同時index更新は非対応 |
+| Compromised official origin | Record every hash change; distinguish current observation from reviewed observation | Truth cannot be determined automatically from a compromised source |
+| GitHub account compromise | Least-privilege Actions, signed chain, private vulnerability reporting | Repository deletion and Pages replacement still depend on account security |
+| npm supply chain | Lockfile integrity, exact version, disabled lifecycle scripts in CI | Dependency code still runs during a trusted build |
+| GitHub Action supply chain | Pin official Actions to complete commit SHAs | A vulnerability in the pinned commit remains possible |
+| Malicious fork pull request | No PR-event execution; approval required for all external workflows | A maintainer can still make the human error of running unreviewed code |
+| Workstation compromise | AES-256-GCM keystore, Keychain split, no secret output | Strong compromise during signing or memory capture is out of scope |
+| GitHub Pages header limits | Meta CSP, no inline scripts or styles | Response-header-only controls such as `frame-ancestors` cannot be enforced |
+| Concurrent update | Workflow concurrency group | Multiple local writers can still race on an index |
+| Technocore prompt injection | No room reader, no URL fetch, no automatic reply | A human can still copy an untrusted instruction into a terminal |
 
-## 脆弱性報告
+## Vulnerability reporting
 
-秘密情報、未公開exploit、account侵害の兆候はpublic issueへ書かず、GitHub repositoryのPrivate vulnerability reportingから報告してください。一般的なsource訂正や誤検知はissue templateを使用できます。
+Do not place a secret, unpublished exploit, or evidence of account compromise in a public issue. Use the repository's Private vulnerability reporting. General source corrections and false-positive reports may use the public issue template.

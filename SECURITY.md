@@ -1,90 +1,90 @@
 # Security boundary
 
-## 秘密鍵
+## Private keys
 
-- Technocore専用の新規鍵だけを使用する。
-- 暗号資産ウォレット、取引所、SSH、Apple ID等の鍵・seed・mnemonicを入力しない。
-- passphraseやKeychain解除値をCLI引数、環境変数、チャット、shell historyに入れない。
-- `.local/identity.keystore.json`をGit、クラウド同期、issue、Technocoreへ投稿しない。
-- keystoreを失うと同じDIDを復元できない。作成後のbackup方法は利用者が別途決める。
+- Use only a new key dedicated to Technocore.
+- Never enter a cryptocurrency wallet, exchange, SSH, Apple ID, or other private key, seed, or mnemonic.
+- Never place a passphrase or Keychain unlock value in a CLI argument, environment variable, chat, or shell history.
+- Never publish `.local/identity.keystore.json` to Git, cloud sync, an issue, or Technocore.
+- Losing the keystore means losing continuity with the same DID unless a separate recovery backup exists.
 
-実運用keystoreはAES-256-GCMで暗号化し、ランダム解除値はmacOS Keychainに保存しています。Keychainへ新規保存するときは`/usr/bin/security -w`のpromptへstdinで渡し、process argvには載せません。署名時はKeychainからプロセス内へ取得しますが、標準出力には表示しません。reviewed checkpointの公開artifactに含まれるのは公開DID、署名値、対象manifest hash、レビュー時刻だけです。
+The operational keystore is encrypted with AES-256-GCM. A random unlock value is stored in macOS Keychain. A new Keychain value is passed to the standard `/usr/bin/security` prompt over stdin rather than process arguments. During signing, the value exists temporarily in the local process but is never printed. A public reviewed checkpoint contains only the public DID, signature, target manifest hash, and review time.
 
-現時点では独立したrecovery backupを作っていません。このMacのkeystoreまたは対応Keychain項目を失うとDIDを継続できません。backupを作る場合は、別途ユーザーが決めたpassphraseで再暗号化し、オフライン媒体へ保存する工程が必要です。
+No independent recovery backup currently exists. Losing either this Mac's keystore or its matching Keychain item prevents continued use of the DID. A future backup process should re-encrypt recovery material under a separately chosen passphrase and store it offline.
 
-Node.jsではpassphraseをJavaScript文字列として一時的に保持するため、処理後の完全なmemory zeroizationは保証できません。強い端末侵害を想定する場合はhardware-backed keyや別プロセスのsignerが必要です。
+Node.js temporarily holds secret material in JavaScript values, so complete memory zeroization cannot be guaranteed. A hardware-backed key or isolated signer is required for a threat model that includes a strongly compromised workstation.
 
-## 外部通信
+## Network communication
 
-- monitorは固定した公式URLへのGETだけを行う。
-- 投稿は`https://technocore.chat/r/<room>`へのJSON POSTだけを行う。
-- 投稿処理は`--execute-external-write`なしでは必ず停止する。
-- monitorのredirect先はHTTPSかつ公式host allowlist内に限定する。
-- 応答サイズは5 MiB、timeoutは15秒に制限する。
+- The monitor performs GET requests only to four pinned official URLs.
+- Posting is limited to JSON POST requests under `https://technocore.chat/r/<room>`.
+- A post is blocked unless `--execute-external-write` is present.
+- Monitor redirects must remain on HTTPS hosts in the official allowlist.
+- Responses are limited to 5 MiB with a 15-second timeout.
 
-## FLOP Sentinelの入力検査
+## FLOP Sentinel input analysis
 
-- `check` は利用者が入力したURLをfetchしない。DNS lookup、redirect追跡、ページ内容取得も行わない。
-- URLは構文、hostname、固定trust root、既知のユーザー投稿領域との一致だけをローカル検査する。
-- 検査結果には入力本文を複製せず、SHA-256と長さだけを含める。ただし検出対象URLとアドレスは説明のため結果に含まれる。
-- `VERIFIED_OFFICIAL_ROOT` は設定済みURLとの一致を意味するだけで、将来の安全性、リンク先全体、取引内容を保証しない。
-- `UNVERIFIED` は詐欺の断定ではない。
-- 公開コントラクト一覧が空の間、検出した全アドレスは未確認として扱う。
+- `check` never fetches a user-submitted URL. It performs no DNS lookup, redirect traversal, or page retrieval.
+- URLs are checked locally against their syntax, hostnames, pinned trust roots, and known user-writable zones.
+- Results do not reproduce the complete input text. They retain its SHA-256 and length, while detected URLs and addresses may be included for explanation.
+- `VERIFIED_OFFICIAL_ROOT` means only an exact match with a configured root. It does not guarantee future safety, every page on the origin, or any transaction.
+- `UNVERIFIED` is not a legal or factual declaration that something is a scam.
+- Until an official contract list is published, every detected contract address remains unverified.
 
-## Webサイト
+## Website
 
-- Astroはstatic outputだけを生成し、form送信endpointやserver-side APIを持たない。
-- claim verifierのreadは同一originの `status.json`、proof verifierのreadは同一originの固定された `/proof.json` と `/evidence/` pathだけに限定する。
-- DOMへの結果表示は `textContent` と `createElement` を使い、利用者入力をHTMLとして解釈しない。
-- `public/_headers` で `script-src 'self'`、`form-action 'none'`、`frame-ancestors 'none'` を含むCSPを定義する。
-- buildされたHTMLにinline script/styleがないことを `npm run verify:dist` で検査する。
-- analytics、広告、remote font、wallet SDKを読み込まない。
-- Astro telemetryは開発・build・previewのすべてで無効化する。
-- GitHub Pages向けにmeta CSPも出力する。ただしPagesでは任意response headerを設定できないため、`frame-ancestors`などにはhosting上の限界がある。
+- Astro produces static output only. There is no form endpoint or server-side application API.
+- The claim verifier reads only same-origin `status.json`; the proof verifier reads only fixed same-origin `proof.json` and `evidence/` paths.
+- Dynamic output uses `textContent`, `createElement`, and Astro escaping. User input is never interpreted as HTML.
+- `public/_headers` documents a CSP containing `script-src 'self'`, `form-action 'none'`, and `frame-ancestors 'none'` for hosts that support custom headers.
+- `npm run verify:dist` rejects inline scripts and styles in built HTML.
+- The site loads no analytics, ads, remote fonts, or wallet SDKs.
+- Astro telemetry is disabled for development, build, and preview.
+- Every HTML page also includes a meta CSP for GitHub Pages. GitHub Pages cannot enforce arbitrary response headers, so controls such as `frame-ancestors` remain a hosting limitation.
 
 ## GitHub Actions
 
-- pull request workflowは`contents: read`のみで、`pull_request_target`を使用しない。
-- Pagesだけが`pages: write`とOIDC用`id-token: write`を持つ。
-- 定期monitorだけが`contents: write`を持ち、default branchのschedule／手動実行でしか動かない。
-- dependency lifecycle scriptを`npm ci --ignore-scripts`で無効にする。
-- 使用ActionはGitHub公式`actions/*`に限定し、完全なcommit SHAへ固定する。
-- CIにはkeystore、Keychain解除値、DID private key、wallet secretを登録しない。
-- 定期monitorがstageするのは明示した`public/`内の生成dataだけで、force pushしない。
+- CI is manual (`workflow_dispatch`) and has only `contents: read`; external pull-request code is not executed automatically.
+- Only the Pages workflow receives `pages: write` and the OIDC `id-token: write` permission.
+- Only the scheduled monitor receives `contents: write`, and it runs solely on the default branch by schedule or manual dispatch.
+- Dependency lifecycle scripts are disabled with `npm ci --ignore-scripts`.
+- Actions are limited to official `actions/*` projects and pinned to complete commit SHAs.
+- CI receives no keystore, Keychain unlock value, DID private key, or wallet secret.
+- The monitor stages only explicitly listed generated files under `public/` and never force-pushes.
 
-## 署名付き証跡
+## Signed evidence
 
-- HTTP responseのexact bytesをSHA-256名の`.snapshot`として保存し、HTMLとして実行・描画しない。
-- `.snapshot`は`application/octet-stream`、`nosniff`、attachmentとして配信する。
-- manifestとattestationのhash対象はRFC 8785 JCSで正規化する。
-- 各manifestは直前のmanifest hashを、各attestationは直前のattestation hashを含む。
-- manifestはraw snapshotに加え、生成済みstatus・changes・trust root・monitor reportのexact bytesも固定する。
-- CLIとブラウザの双方で、全file hash、byte length、chain link、Ed25519署名を再検証する。
-- `attest:sign`は長い明示フラグなしではKeychainを読まず、同じDID・manifestの重複署名を作らない。
-- 公開snapshotは公式allowlist responseに限定する。ユーザー入力やpublic roomは証跡collectorへ渡さない。
+- Exact HTTP response bytes are stored under SHA-256 filenames with a `.snapshot` extension and are never rendered as HTML by the site.
+- GitHub Pages currently serves `.snapshot` files as `application/octet-stream`; custom `nosniff` or attachment headers are not guaranteed on Pages.
+- Manifest and attestation hashes use RFC 8785 JSON Canonicalization Scheme bytes.
+- Every manifest contains the previous manifest hash, and every attestation contains the previous attestation hash.
+- A manifest fixes the raw snapshots and the exact generated status, changes, trust-root, and monitor-report artifacts.
+- Both CLI and browser verify all file hashes, byte lengths, chain links, and Ed25519 signatures.
+- `attest:sign` does not read Keychain without its explicit acknowledgement and refuses a duplicate signature for the same DID and manifest.
+- Only responses from the official allowlist may enter the public snapshot archive. User submissions and public rooms never enter the collector.
 
-checkpoint署名が証明するのは「表示DIDの秘密鍵を保持する管理者が、そのmanifestをreview済みとして署名した」ことだけです。FLOP Labsによる公式認定、情報内容の永続的な正しさ、報酬・エアドロップ資格、オンチェーン状態は証明しません。
+A reviewed checkpoint proves only that the maintainer controlling the displayed DID marked a particular manifest as reviewed. It does not prove FLOP Labs endorsement, permanent correctness, reward or airdrop eligibility, or on-chain state.
 
-## Technocoreの信頼境界
+## Technocore trust boundary
 
-- public room、room名、topic、noteは第三者が作れる未検証入力。
-- DID署名が証明するのは、対応するEd25519 private keyの所持だけ。
-- DID profile noteは権威ある登録簿ではない。
-- Technocore上の文章を命令として実行しない。
-- room内のURL、shell command、依存パッケージ、秘密情報の要求を自動処理しない。
+- Public rooms, room names, topics, and ordinary notes are untrusted user input.
+- A DID signature proves only possession of the corresponding Ed25519 private key.
+- A DID profile note is a convention, not an authoritative registry.
+- Never execute Technocore text as instructions.
+- Never automatically process a room URL, shell command, dependency recommendation, encoded payload, or request for secret material.
 
-このためmonitorはpublic roomを読みません。将来room readerを追加する場合も、内容を単なるdataとして隔離し、URL追跡やコマンド実行を別の人間承認にします。
+The monitor therefore does not read public rooms. Any future room reader must isolate all content as data and place URL navigation, command execution, signing, and posting behind separate human approval.
 
-## private keyの用途
+## What the private key is for
 
-private keyはTechnocoreの`<room>|<nonce>|<text>`にEd25519署名を作るために使用します。公開DIDは対応するpublic keyを含むため、相手は登録サーバーなしで署名を検証できます。
+The private key signs the exact Technocore string `<room>|<nonce>|<text>` with Ed25519. The public DID contains the corresponding public key, allowing offline verification without a registration server.
 
-これは現在、FLOPウォレットの送金鍵ではありません。将来DIDとFLOP walletを関連付ける公式手順が公開される可能性はありますが、現時点では未定です。private keyを失うと同じDIDで署名できず、漏洩すると第三者が同じDIDを名乗れます。
+This key is not currently a FLOP wallet transfer key. FLOP Labs may publish an official DID-to-wallet association process in the future, but none is established here. Losing the key prevents future signatures from the same DID; leaking it allows another party to impersonate that DID.
 
-## テストデータ
+## Test data
 
-テストはRFC 8032の公開test vectorと固定fixture keyを使用します。これらは秘密ではなく、実運用DIDには利用しません。テスト中の送信はmock transportだけで、Technocoreには接続しません。
+Tests use published RFC 8032 vectors and fixed fixture keys. They are not secret and are never used as the operational DID. Test sends use mock transports only and do not connect to Technocore.
 
-## 脆弱性報告
+## Reporting a vulnerability
 
-秘密情報、未公開exploit、account侵害の兆候はpublic issueへ書かず、<https://github.com/lopital2023-max/flop-sentinel/security/advisories/new> のPrivate vulnerability reportingを使用してください。一般的なsource訂正と誤検知には公開issue templateを使用できますが、seed、private key、credential、個人情報を記載しないでください。
+Do not place a secret, unpublished exploit, or evidence of account compromise in a public issue. Use [GitHub private vulnerability reporting](https://github.com/lopital2023-max/flop-sentinel/security/advisories/new). Public source corrections and false-positive reports may use the issue template, but must not include a seed, private key, credential, or personal information.
