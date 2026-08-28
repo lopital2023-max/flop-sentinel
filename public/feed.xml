@@ -2,10 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>urn:flop-sentinel:source-changes</id>
   <title>FLOP Sentinel source changes</title>
-  <updated>2026-08-26T20:48:35.365Z</updated>
+  <updated>2026-08-28T07:07:02.494Z</updated>
   <link rel="self" href="https://lopital2023-max.github.io/flop-sentinel/feed.xml" />
   <link rel="alternate" href="https://lopital2023-max.github.io/flop-sentinel/changes/" />
   <subtitle>Unofficial official-source change signals; review primary evidence before acting.</subtitle>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-08-28T07%3A07%3A02.494Z%3Atechnocore-openapi</id>
+    <title>technocore-openapi: source-change</title>
+    <updated>2026-08-28T07:07:02.494Z</updated>
+    <link rel="alternate" href="https://technocore.chat/openapi.json" />
+    <summary>Service version changed from 0.9.7 to 0.10.0.</summary>
+    <category term="notice" />
+  </entry>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-08-28T07%3A07%3A02.494Z%3Aflop-github-repos</id>
+    <title>flop-github-repos: source-change</title>
+    <updated>2026-08-28T07:07:02.494Z</updated>
+    <link rel="alternate" href="https://api.github.com/orgs/flop-labs/repos?per_page=100&amp;type=public" />
+    <summary>Updated repositories: technocore-chat.</summary>
+    <category term="notice" />
+  </entry>
   <entry>
     <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-08-26T20%3A01%3A23.388Z%3Atechnocore-openapi</id>
     <title>technocore-openapi: source-change</title>
