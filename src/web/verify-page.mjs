@@ -26,85 +26,50 @@ let statusDocument = null;
 let latestResult = null;
 
 const text = {
-  ja: {
-    ready: "証拠データ読込済み",
-    loadError: "証拠データを読み込めません",
-    empty: "検証する内容を入力してください。",
-    analyzing: "検証中…",
-    reasons: "判定理由",
-    urls: "検出URL",
-    evidence: "根拠",
-    limits: "この判定の限界",
-    noIndicator: "設定済みの危険指標は検出されませんでした。",
-    dataset: "使用データ",
-    copied: "コピーしました",
-    copyFailed: "コピーできませんでした",
-    verdicts: {
-      VERIFIED_OFFICIAL_ROOT: "公式rootと一致",
-      OFFICIALLY_REFERENCED: "公式namespace／参照先",
-      UNVERIFIED: "未確認",
-      CONFLICTS_WITH_CURRENT_OFFICIAL_STATE: "現行仕様と矛盾",
-      HIGH_RISK_PATTERN: "高リスク指標あり",
-    },
-    summaries: {
-      VERIFIED_OFFICIAL_ROOT: "入力は固定した公式rootと完全一致し、設定済みの危険指標は検出されませんでした。",
-      OFFICIALLY_REFERENCED: "入力は設定済みの公式namespaceまたは公式参照先に含まれます。内容そのものの正しさは別途確認してください。",
-      UNVERIFIED: "現在の証拠だけでは、公式または安全として扱えません。これは詐欺の断定ではありません。",
-      CONFLICTS_WITH_CURRENT_OFFICIAL_STATE: "主張の一部が、現在観測している公式仕様と矛盾します。",
-      HIGH_RISK_PATTERN: "操作を止め、別経路で確認すべき高リスク指標があります。",
-    },
+  ready: "Evidence dataset ready",
+  loadError: "Evidence dataset failed to load",
+  empty: "Enter something to verify.",
+  reasons: "Reasons",
+  urls: "Detected URLs",
+  evidence: "Evidence",
+  limits: "Limits of this verdict",
+  noIndicator: "No configured risk indicator was triggered.",
+  dataset: "Dataset",
+  copied: "Copied",
+  copyFailed: "Copy failed",
+  verdicts: {
+    VERIFIED_OFFICIAL_ROOT: "Verified official root",
+    OFFICIALLY_REFERENCED: "Official namespace / reference",
+    UNVERIFIED: "Unverified",
+    CONFLICTS_WITH_CURRENT_OFFICIAL_STATE: "Conflicts with current state",
+    HIGH_RISK_PATTERN: "High-risk pattern",
   },
-  en: {
-    ready: "Evidence dataset ready",
-    loadError: "Evidence dataset failed to load",
-    empty: "Enter something to verify.",
-    analyzing: "Checking…",
-    reasons: "Reasons",
-    urls: "Detected URLs",
-    evidence: "Evidence",
-    limits: "Limits of this verdict",
-    noIndicator: "No configured risk indicator was triggered.",
-    dataset: "Dataset",
-    copied: "Copied",
-    copyFailed: "Copy failed",
-    verdicts: {
-      VERIFIED_OFFICIAL_ROOT: "Verified official root",
-      OFFICIALLY_REFERENCED: "Official namespace / reference",
-      UNVERIFIED: "Unverified",
-      CONFLICTS_WITH_CURRENT_OFFICIAL_STATE: "Conflicts with current state",
-      HIGH_RISK_PATTERN: "High-risk pattern",
-    },
-    summaries: {
-      VERIFIED_OFFICIAL_ROOT: "The input exactly matches a pinned official root and no configured risk indicator was detected.",
-      OFFICIALLY_REFERENCED: "The input is inside a configured official namespace or reference. Its specific content still needs review.",
-      UNVERIFIED: "The current evidence is insufficient to treat this as official or safe. This is not an accusation of fraud.",
-      CONFLICTS_WITH_CURRENT_OFFICIAL_STATE: "Part of the claim conflicts with the currently observed official specification.",
-      HIGH_RISK_PATTERN: "Stop and verify through another channel before taking action.",
-    },
+  summaries: {
+    VERIFIED_OFFICIAL_ROOT: "The input exactly matches a pinned official root and no configured risk indicator was detected.",
+    OFFICIALLY_REFERENCED: "The input is inside a configured official namespace or reference. Its specific content still needs review.",
+    UNVERIFIED: "The current evidence is insufficient to treat this as official or safe. This is not an accusation of fraud.",
+    CONFLICTS_WITH_CURRENT_OFFICIAL_STATE: "Part of the claim conflicts with the currently observed official specification.",
+    HIGH_RISK_PATTERN: "Stop and verify through another channel before taking action.",
   },
 };
 
 const indicatorText = {
-  INVALID_URL: ["URLを解析できません。", "The URL could not be parsed."],
-  INSECURE_HTTP: ["HTTPSではありません。", "The URL does not use HTTPS."],
-  URL_USERINFO: ["userinfo構文で実際のhostが隠されています。", "User-info syntax hides the actual host."],
-  NON_STANDARD_PORT: ["標準外のportを使用しています。", "The URL uses a non-standard port."],
-  IP_LITERAL_HOST: ["ドメインではなくIPアドレスが指定されています。", "The URL uses an IP address instead of a named host."],
-  PUNYCODE_HOST: ["Punycodeによる類似文字の可能性があります。", "Punycode may visually imitate another domain."],
-  MIXED_SCRIPT_HOST: ["ラテン文字とキリル／ギリシャ文字が混在しています。", "The hostname mixes Latin with Cyrillic or Greek characters."],
-  EMBEDDED_OFFICIAL_HOSTNAME: ["公式host名が別ドメインの一部として埋め込まれています。", "An official hostname is embedded inside another parent domain."],
-  LOOKALIKE_OFFICIAL_HOSTNAME: ["公式host名に非常によく似ています。", "The hostname is very close to an official host."],
-  USER_WRITABLE_OFFICIAL_SERVICE: ["公式サービス上ですが、第三者が書き込める領域です。", "This is on an official service but inside a user-writable area."],
-  UNVERIFIED_URL: ["設定済みの公式rootでは確認できません。", "The URL is not covered by a configured official root."],
-  SECRET_MATERIAL_REQUEST: ["秘密鍵・seed・復元フレーズを要求しています。絶対に入力しないでください。", "It requests a private key, seed, or recovery phrase. Never enter one."],
-  WALLET_CONNECTION_REQUEST: ["ウォレット接続を要求しています。originと署名内容を確認してください。", "It requests a wallet connection. Verify the origin and signature request."],
-  UNVERIFIED_CONTRACT_ADDRESS: ["現在の公式データに掲載されていないアドレスです。", "The address is not in the current official dataset."],
-  CLAIM_CONFLICTS_WITH_CURRENT_SERVICE: ["Technocoreのclaimを主張していますが、現行仕様にはclaim/token endpointがありません。", "It associates a claim with Technocore, whose current specification has no claim/token endpoint."],
+  INVALID_URL: "The URL could not be parsed.",
+  INSECURE_HTTP: "The URL does not use HTTPS.",
+  URL_USERINFO: "User-info syntax hides the actual host.",
+  NON_STANDARD_PORT: "The URL uses a non-standard port.",
+  IP_LITERAL_HOST: "The URL uses an IP address instead of a named host.",
+  PUNYCODE_HOST: "Punycode may visually imitate another domain.",
+  MIXED_SCRIPT_HOST: "The hostname mixes Latin with Cyrillic or Greek characters.",
+  EMBEDDED_OFFICIAL_HOSTNAME: "An official hostname is embedded inside another parent domain.",
+  LOOKALIKE_OFFICIAL_HOSTNAME: "The hostname is very close to an official host.",
+  USER_WRITABLE_OFFICIAL_SERVICE: "This is on an official service but inside a user-writable area.",
+  UNVERIFIED_URL: "The URL is not covered by a configured official root.",
+  SECRET_MATERIAL_REQUEST: "It requests a private key, seed, or recovery phrase. Never enter one.",
+  WALLET_CONNECTION_REQUEST: "It requests a wallet connection. Verify the origin and signature request.",
+  UNVERIFIED_CONTRACT_ADDRESS: "The address is not in the current official dataset.",
+  CLAIM_CONFLICTS_WITH_CURRENT_SERVICE: "It associates a claim with Technocore, whose current specification has no claim/token endpoint.",
 };
-
-function language() {
-  return document.documentElement.dataset.language === "en" ? "en" : "ja";
-}
 
 function clearChildren(element) {
   while (element.firstChild) element.removeChild(element.firstChild);
@@ -128,22 +93,20 @@ function safeEvidenceLink(url) {
 
 function renderResult() {
   if (!latestResult) return;
-  const selected = language();
-  const copy = text[selected];
   resultPlaceholder.hidden = true;
   resultContent.hidden = false;
   verdictBanner.dataset.verdict = latestResult.verdict;
-  verdictTitle.textContent = copy.verdicts[latestResult.verdict] ?? latestResult.verdict;
+  verdictTitle.textContent = text.verdicts[latestResult.verdict] ?? latestResult.verdict;
   verdictConfidence.textContent = `${latestResult.confidence.toUpperCase()} CONFIDENCE`;
-  verdictSummary.textContent = copy.summaries[latestResult.verdict] ?? latestResult.summary;
-  document.querySelector("#indicator-heading").textContent = copy.reasons;
-  document.querySelector("#url-heading").textContent = copy.urls;
-  document.querySelector("#evidence-heading").textContent = copy.evidence;
-  document.querySelector("#limitation-heading").textContent = copy.limits;
+  verdictSummary.textContent = text.summaries[latestResult.verdict] ?? latestResult.summary;
+  document.querySelector("#indicator-heading").textContent = text.reasons;
+  document.querySelector("#url-heading").textContent = text.urls;
+  document.querySelector("#evidence-heading").textContent = text.evidence;
+  document.querySelector("#limitation-heading").textContent = text.limits;
 
   clearChildren(indicatorList);
   if (latestResult.indicators.length === 0) {
-    const item = createTextElement("li", copy.noIndicator, "indicator-item");
+    const item = createTextElement("li", text.noIndicator, "indicator-item");
     item.dataset.severity = "info";
     indicatorList.append(item);
   } else {
@@ -152,7 +115,7 @@ function renderResult() {
       item.className = "indicator-item";
       item.dataset.severity = indicator.severity;
       item.append(createTextElement("strong", `${indicator.severity.toUpperCase()} · ${indicator.code}`));
-      item.append(createTextElement("p", indicatorText[indicator.code]?.[selected === "ja" ? 0 : 1] ?? indicator.message));
+      item.append(createTextElement("p", indicatorText[indicator.code] ?? indicator.message));
       indicatorList.append(item);
     }
   }
@@ -186,15 +149,8 @@ function renderResult() {
   }
 
   clearChildren(limitationList);
-  const limits = selected === "ja"
-    ? [
-      "この判定は安全を保証しません。",
-      "入力されたURLの現在のページ内容は取得していません。",
-      "データ時刻以降に公式情報が変わっている可能性があります。",
-    ]
-    : latestResult.limitations;
-  for (const limitation of limits) limitationList.append(createTextElement("li", limitation));
-  resultDataset.textContent = `${copy.dataset}: ${latestResult.datasetGeneratedAt} · SHA-256 ${latestResult.input.sha256}`;
+  for (const limitation of latestResult.limitations) limitationList.append(createTextElement("li", limitation));
+  resultDataset.textContent = `${text.dataset}: ${latestResult.datasetGeneratedAt} · SHA-256 ${latestResult.input.sha256}`;
 }
 
 async function loadStatus() {
@@ -207,9 +163,9 @@ async function loadStatus() {
     statusDocument = await response.json();
     if (statusDocument.schemaVersion !== 1) throw new Error("schema mismatch");
     analyzeButton.disabled = false;
-    dataState.replaceChildren(createTextElement("span", text[language()].ready));
+    dataState.replaceChildren(createTextElement("span", text.ready));
   } catch {
-    dataState.replaceChildren(createTextElement("span", text[language()].loadError));
+    dataState.replaceChildren(createTextElement("span", text.loadError));
   }
 }
 
@@ -217,7 +173,7 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!statusDocument) return;
   if (!input.value.trim()) {
-    input.setCustomValidity(text[language()].empty);
+    input.setCustomValidity(text.empty);
     input.reportValidity();
     return;
   }
@@ -259,15 +215,10 @@ copyResult.addEventListener("click", async () => {
   if (!latestResult) return;
   try {
     await navigator.clipboard.writeText(JSON.stringify(latestResult, null, 2));
-    copyResult.title = text[language()].copied;
+    copyResult.title = text.copied;
   } catch {
-    copyResult.title = text[language()].copyFailed;
+    copyResult.title = text.copyFailed;
   }
-});
-
-window.addEventListener("flop-language-change", () => {
-  if (statusDocument) dataState.replaceChildren(createTextElement("span", text[language()].ready));
-  renderResult();
 });
 
 loadStatus();

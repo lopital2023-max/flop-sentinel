@@ -3,40 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import { loadSiteData } from "../lib/site-data.mjs";
 
 const { status, changes, trust } = await loadSiteData();
-const stateJa = {
-  available: "利用可能",
-  "not-offered-current-service": "現行サービスでは未提供",
-  "not-published-in-monitored-sources": "監視対象では未公表",
-  "published-in-openapi": "OpenAPI掲載済み",
-  unconfirmed: "未確認",
-  "observation-error": "観測エラー",
-};
-const capabilityJa = {
-  "technocore-service": {
-    label: "Technocore Chat / Notes",
-    detail: "公式OpenAPIで公開状態とservice versionを確認しています。",
-  },
-  "central-registration": {
-    label: "中央登録",
-    detail: "現行の認証仕様では、登録すべきアカウントや登録endpointはありません。",
-  },
-  "technocore-claim-token-endpoint": {
-    label: "Technocore claim / token endpoint",
-    detail: "現行のTechnocore仕様は、このサービスにclaim・token endpointがないと明記しています。",
-  },
-  faucet: {
-    label: "公式Faucet",
-    detail: "監視中のOpenAPIにはFaucet endpointがありません。別の場所にも存在しないという証明ではありません。",
-  },
-  "testnet-rpc": {
-    label: "FLOP testnet RPC / Chain ID",
-    detail: "監視対象の公式情報からRPC URLとChain IDを確認できていません。",
-  },
-  "official-contracts": {
-    label: "公式FLOPコントラクト",
-    detail: "固定した公式ソースに掲載されるまで、いずれのアドレスも公式として扱いません。",
-  },
-};
 const availableCount = status.capabilities.filter((item) => item.state === "available").length;
 const explicitUnavailableCount = status.capabilities.filter(
   (item) => item.state === "not-offered-current-service",
@@ -53,34 +19,22 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
   <section class="hero">
     <div>
       <p class="eyebrow">
-        <span data-lang="ja">EVIDENCE-FIRST FLOP INTELLIGENCE</span>
-        <span data-lang="en" hidden>EVIDENCE-FIRST FLOP INTELLIGENCE</span>
+        EVIDENCE-FIRST FLOP INTELLIGENCE
       </p>
-      <h1 data-lang="ja">信じる前に、<em>根拠</em>を見る。</h1>
-      <h1 data-lang="en" hidden>Evidence before <em>action.</em></h1>
-      <p class="hero-copy" data-lang="ja">
-        FLOPに関するURL・claim・コントラクトを、固定した公式ソースと現在の公開仕様から検証する、非公式の安全レイヤーです。
-      </p>
-      <p class="hero-copy" data-lang="en" hidden>
+      <h1>Evidence before <em>action.</em></h1>
+      <p class="hero-copy">
         An unofficial safety layer that checks FLOP URLs, claims, and contracts against pinned official sources and the currently published specification.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href={siteHref("/verify/")}>
-          <span data-lang="ja">情報を検証する →</span>
-          <span data-lang="en" hidden>Verify a claim →</span>
-        </a>
-        <a class="button" href={siteHref("/methodology/")}>
-          <span data-lang="ja">判定方法を見る</span>
-          <span data-lang="en" hidden>Read the method</span>
-        </a>
+        <a class="button primary" href={siteHref("/verify/")}>Verify a claim →</a>
+        <a class="button" href={siteHref("/methodology/")}>Read the method</a>
       </div>
     </div>
 
     <aside class="observation-card" aria-label="Latest observation">
       <span class="micro-label"><span class="live-dot"></span>LATEST OBSERVATION</span>
       <strong><time data-iso={status.generatedAt}>{status.generatedAt}</time></strong>
-      <p data-lang="ja">Asia/Tokyo表示・公式4ソースを読み取り</p>
-      <p data-lang="en" hidden>Shown in Asia/Tokyo · four official sources observed</p>
+      <p>Shown in Asia/Tokyo · four official sources observed</p>
     </aside>
   </section>
 
@@ -88,17 +42,15 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
     <div class="section-heading">
       <div>
         <p class="eyebrow">READINESS REGISTER</p>
-        <h2 id="readiness-title" data-lang="ja">今できることと、まだ言えないこと。</h2>
-        <h2 id="readiness-title-en" data-lang="en" hidden>What exists—and what cannot be claimed yet.</h2>
+        <h2 id="readiness-title">What exists—and what cannot be claimed yet.</h2>
       </div>
-      <p data-lang="ja">「未掲載」と「存在しない」を分け、すべての状態に観測時刻と根拠hashを付けます。</p>
-      <p data-lang="en" hidden>“Not published” is kept separate from “does not exist,” with timestamps and evidence hashes on every state.</p>
+      <p>“Not published” is kept separate from “does not exist,” with timestamps and evidence hashes on every state.</p>
     </div>
 
     <div class="metric-grid" aria-label="Capability summary">
-      <div class="metric"><strong>{availableCount}</strong><span data-lang="ja">確認済み・利用可能</span><span data-lang="en" hidden>confirmed available</span></div>
-      <div class="metric"><strong>{explicitUnavailableCount}</strong><span data-lang="ja">現行サービスで明示的に未提供</span><span data-lang="en" hidden>explicitly not offered</span></div>
-      <div class="metric"><strong>{pendingCount}</strong><span data-lang="ja">公式情報待ち</span><span data-lang="en" hidden>awaiting official publication</span></div>
+      <div class="metric"><strong>{availableCount}</strong><span>confirmed available</span></div>
+      <div class="metric"><strong>{explicitUnavailableCount}</strong><span>explicitly not offered</span></div>
+      <div class="metric"><strong>{pendingCount}</strong><span>awaiting official publication</span></div>
     </div>
 
     <div class="capability-grid">
@@ -108,12 +60,9 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
             {item.state === "available" ? "✓" : item.state === "not-offered-current-service" ? "—" : "?"}
           </div>
           <div>
-            <h3 data-lang="ja">{capabilityJa[item.id]?.label ?? item.label}</h3>
-            <h3 data-lang="en" hidden>{item.label}</h3>
-            <p data-lang="ja">{capabilityJa[item.id]?.detail ?? item.detail}</p>
-            <p data-lang="en" hidden>{item.detail}</p>
-            <span class="status-code" data-lang="ja">{stateJa[item.state] ?? item.state}</span>
-            <span class="status-code" data-lang="en" hidden>{item.state}</span>
+            <h3>{item.label}</h3>
+            <p>{item.detail}</p>
+            <span class="status-code">{item.state}</span>
             {item.evidence[0] && (
               <a class="evidence-link" href={item.evidence[0].url} target="_blank" rel="noreferrer">
                 evidence ↗
@@ -129,19 +78,16 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
     <div class="section-heading">
       <div>
         <p class="eyebrow">PROVENANCE GRAPH</p>
-        <h2 id="trust-title" data-lang="ja">ドメインではなく、到達経路を検証。</h2>
-        <h2 id="trust-title-en" data-lang="en" hidden>Trust the path, not just the domain.</h2>
+        <h2 id="trust-title">Trust the path, not just the domain.</h2>
       </div>
-      <p data-lang="ja">Technocore上のroomやnoteは公式ドメインにありますが、ユーザー投稿です。公式声明と混同しません。</p>
-      <p data-lang="en" hidden>Technocore rooms and notes live on an official domain but remain user-written. They are never promoted to official statements.</p>
+      <p>Technocore rooms and notes live on an official domain but remain user-written. They are never promoted to official statements.</p>
     </div>
 
     <div class="trust-map">
       <div class="trust-hub">
         <div>
           <span>PINNED MODEL v{trust.version}</span>
-          <strong data-lang="ja">公式性の起点</strong>
-          <strong data-lang="en" hidden>Trust anchors</strong>
+          <strong>Trust anchors</strong>
         </div>
       </div>
       <div class="trust-nodes">
@@ -167,11 +113,9 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
     <div class="section-heading">
       <div>
         <p class="eyebrow">CHANGE SIGNAL</p>
-        <h2 id="changes-title" data-lang="ja">仕様が動いた瞬間を残す。</h2>
-        <h2 id="changes-title-en" data-lang="en" hidden>Keep the moment the evidence moved.</h2>
+        <h2 id="changes-title">Keep the moment the evidence moved.</h2>
       </div>
-      <p data-lang="ja">変更は自動的に新機能を意味しません。hash差分を合図として、一次ソースを確認します。</p>
-      <p data-lang="en" hidden>A changed hash is a review signal, not automatic proof of a new feature.</p>
+      <p>A changed hash is a review signal, not automatic proof of a new feature.</p>
     </div>
 
     {latestEvents.length > 0 ? (
@@ -181,24 +125,17 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
             <time data-iso={event.observedAt}>{event.observedAt}</time>
             <div>
               <h3>{event.sourceId}</h3>
-              <p data-lang="ja">監視対象の正規化コンテンツに変更を検出しました。一次ソースで内容を確認してください。</p>
-              <p data-lang="en" hidden>{event.summary.join(" ")}</p>
+              <p>{event.summary.join(" ")}</p>
               {event.sourceUrl && <a class="evidence-link" href={event.sourceUrl}>source ↗</a>}
             </div>
           </li>
         ))}
       </ol>
     ) : (
-      <div class="empty-state">
-        <span data-lang="ja">baseline以降の変更イベントはまだありません。</span>
-        <span data-lang="en" hidden>No change event has been recorded since the baseline.</span>
-      </div>
+      <div class="empty-state">No change event has been recorded since the baseline.</div>
     )}
     <div class="hero-actions">
-      <a class="button" href={siteHref("/changes/")}>
-        <span data-lang="ja">変更履歴をすべて見る</span>
-        <span data-lang="en" hidden>Open the full timeline</span>
-      </a>
+      <a class="button" href={siteHref("/changes/")}>Open the full timeline</a>
     </div>
   </section>
 
@@ -206,16 +143,14 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
     <div class="section-heading">
       <div>
         <p class="eyebrow">SAFETY CONTRACT</p>
-        <h2 id="contract-title" data-lang="ja">あなたの鍵にも、ウォレットにも触れない。</h2>
-        <h2 id="contract-title-en" data-lang="en" hidden>No keys. No wallet. No remote scan.</h2>
+        <h2 id="contract-title">No keys. No wallet. No remote scan.</h2>
       </div>
-      <p data-lang="ja">検証はブラウザ内で完結します。入力URLへのアクセス、ウォレット接続、分析トラッキングはありません。</p>
-      <p data-lang="en" hidden>Checks stay in your browser. No submitted URL fetch, wallet connection, or analytics.</p>
+      <p>Checks stay in your browser. No submitted URL fetch, wallet connection, or analytics.</p>
     </div>
     <div class="principle-grid">
-      <article class="principle"><span class="number">01</span><h3>Local-only</h3><p data-lang="ja">入力はネットワークへ送信せず、現在の公開データと照合します。</p><p data-lang="en" hidden>Your input is checked locally against the published dataset.</p></article>
-      <article class="principle"><span class="number">02</span><h3>Evidence-linked</h3><p data-lang="ja">結論だけでなく、根拠URL・時刻・SHA-256を返します。</p><p data-lang="en" hidden>Every conclusion links back to a URL, timestamp, and SHA-256.</p></article>
-      <article class="principle"><span class="number">03</span><h3>Conservative</h3><p data-lang="ja">未確認を詐欺と断定せず、公式ドメインも無条件には信用しません。</p><p data-lang="en" hidden>Unknown is not fraudulent, and an official domain is not unconditional trust.</p></article>
+      <article class="principle"><span class="number">01</span><h3>Local-only</h3><p>Your input is checked locally against the published dataset.</p></article>
+      <article class="principle"><span class="number">02</span><h3>Evidence-linked</h3><p>Every conclusion links back to a URL, timestamp, and SHA-256.</p></article>
+      <article class="principle"><span class="number">03</span><h3>Conservative</h3><p>Unknown is not fraudulent, and an official domain is not unconditional trust.</p></article>
     </div>
   </section>
 </Layout>

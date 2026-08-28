@@ -132,9 +132,13 @@ try {
   assert.ok(malicious.reasons.some((reason) => reason.includes("SECRET_MATERIAL_REQUEST")));
   assert.ok(!requestedUrls.some((url) => url.startsWith(maliciousUrl)), "submitted URL was fetched");
 
-  await evaluate(client, `document.querySelector('[data-set-language="en"]').click()`);
   assert.equal(await evaluate(client, "document.documentElement.lang"), "en");
   assert.equal(await evaluate(client, "document.querySelector('#verdict-title').textContent"), "High-risk pattern");
+  assert.equal(
+    await evaluate(client, `!/[\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Han}]/u.test(document.body.innerText)`),
+    true,
+    "verifier rendered non-English public copy",
+  );
 
   await client.send("Emulation.setDeviceMetricsOverride", {
     width: 375,
@@ -174,6 +178,11 @@ try {
   assert.match(await evaluate(client, "document.querySelector('#proof-attestation-hash').textContent"), /^[a-f0-9]{64}$/);
   assert.match(await evaluate(client, "document.querySelector('#proof-reviewer-did').textContent"), /^did:key:z6Mk/);
   assert.equal(
+    await evaluate(client, `!/[\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Han}]/u.test(document.body.innerText)`),
+    true,
+    "proof page rendered non-English public copy",
+  );
+  assert.equal(
     await evaluate(client, "document.documentElement.scrollWidth <= window.innerWidth + 1"),
     true,
     "proof page has horizontal mobile overflow",
@@ -186,7 +195,7 @@ try {
     await writeFile(process.env.FLOP_SCREENSHOT_PATH, Buffer.from(screenshot.data, "base64"));
   }
   assert.deepEqual(exceptions, []);
-  console.log("Browser E2E passed: claim checks, no user-URL fetch, i18n, mobile layout, and published Ed25519 proof.");
+  console.log("Browser E2E passed: English-only UI, claim checks, no user-URL fetch, mobile layout, and published Ed25519 proof.");
 } finally {
   client.close();
 }

@@ -1,11 +1,11 @@
 ---
 const { current = "home" } = Astro.props;
 const links = [
-  { id: "home", href: "/", ja: "現在地", en: "Status" },
-  { id: "verify", href: "/verify/", ja: "検証する", en: "Verify" },
-  { id: "changes", href: "/changes/", ja: "変更履歴", en: "Changes" },
-  { id: "proof", href: "/proof/", ja: "証跡", en: "Proof" },
-  { id: "methodology", href: "/methodology/", ja: "判定方法", en: "Method" },
+  { id: "home", href: "/", label: "Status" },
+  { id: "verify", href: "/verify/", label: "Verify" },
+  { id: "changes", href: "/changes/", label: "Changes" },
+  { id: "proof", href: "/proof/", label: "Proof" },
+  { id: "methodology", href: "/methodology/", label: "Method" },
 ];
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -26,14 +26,8 @@ const siteHref = (href) => `${base}${href.replace(/^\/+/, "")}`;
   <nav aria-label="Primary navigation">
     {links.map((link) => (
       <a href={siteHref(link.href)} aria-current={current === link.id ? "page" : undefined}>
-        <span data-lang="ja">{link.ja}</span>
-        <span data-lang="en" hidden>{link.en}</span>
+        {link.label}
       </a>
     ))}
   </nav>
-
-  <div class="language-switch" role="group" aria-label="Language">
-    <button type="button" data-set-language="ja" aria-pressed="true">JA</button>
-    <button type="button" data-set-language="en" aria-pressed="false">EN</button>
-  </div>
 </header>

@@ -14,7 +14,7 @@ Status as of 2026-08-27:
 - Official roots separated from user-writable hosted zones: implemented
 - Machine-readable `public/status.json`: generated
 - Local URL, message, and contract-address analysis: implemented
-- Five-page bilingual Astro static website: deployed
+- Five-page English-only Astro static website: deployed
 - Official-source history in `public/changes.json`: generated
 - Content-addressed raw snapshots and JCS manifest hash chain: generated and verified
 - Reviewed checkpoints: two Ed25519 signatures verified
@@ -156,7 +156,7 @@ A verdict is not a guarantee of safety and is not a legal declaration that somet
 
 ## Phase 2: website
 
-The bilingual static site contains five pages:
+The English-only static site contains five pages:
 
 - `/` — readiness dashboard, official-source graph, and latest change signals
 - `/verify/` — browser-local URL, message, and address analysis with reasons

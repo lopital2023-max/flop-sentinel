@@ -12,21 +12,17 @@ const { changes } = await loadSiteData();
 >
   <header class="page-intro">
     <p class="eyebrow">EVIDENCE TIMELINE</p>
-    <h1 data-lang="ja">変化は記録し、意味は断定しない。</h1>
-    <h1 data-lang="en" hidden>Record the change. Review the meaning.</h1>
-    <p data-lang="ja">公式ソースの正規化hashが変わった時刻を記録します。変更イベントは、新機能や公式発表を自動的に意味するものではありません。</p>
-    <p data-lang="en" hidden>We record when a normalized official-source hash changes. An event is a review signal—not automatic proof of a feature or announcement.</p>
+    <h1>Record the change. Review the meaning.</h1>
+    <p>We record when a normalized official-source hash changes. An event is a review signal—not automatic proof of a feature or announcement.</p>
   </header>
 
   <section class="section" aria-labelledby="timeline-title">
     <div class="section-heading">
       <div>
         <p class="eyebrow">{changes.observationCount} OBSERVATIONS · {changes.eventCount} EVENTS</p>
-        <h2 id="timeline-title" data-lang="ja">公開変更履歴</h2>
-        <h2 id="timeline-title-en" data-lang="en" hidden>Public change history</h2>
+        <h2 id="timeline-title">Public change history</h2>
       </div>
-      <p data-lang="ja">監視文書の本文や第三者入力は再掲載せず、変更要約と根拠URL、SHA-256だけを公開します。</p>
-      <p data-lang="en" hidden>We do not republish monitored text or third-party input—only a summary, evidence URL, and SHA-256.</p>
+      <p>We do not republish monitored text or third-party input—only a summary, evidence URL, and SHA-256.</p>
     </div>
 
     {changes.events.length > 0 ? (
@@ -37,12 +33,7 @@ const { changes } = await loadSiteData();
             <div>
               <span class="source-type">{event.severity} · {event.kind}</span>
               <h3>{event.sourceId}</h3>
-              <p data-lang="ja">
-                {event.kind === "monitor-alert"
-                  ? "人による確認が必要な監視アラートを検出しました。"
-                  : "正規化したソース内容のhash変更を検出しました。"}
-              </p>
-              <p data-lang="en" hidden>{event.summary.join(" ")}</p>
+              <p>{event.summary.join(" ")}</p>
               {event.sha256 && <p class="result-dataset">SHA-256 {event.sha256}</p>}
               {event.sourceUrl && (
                 <a class="evidence-link" href={event.sourceUrl} target="_blank" rel="noreferrer">review source ↗</a>
@@ -52,10 +43,7 @@ const { changes } = await loadSiteData();
         ))}
       </ol>
     ) : (
-      <div class="empty-state">
-        <span data-lang="ja">baseline以降の変更イベントはまだありません。</span>
-        <span data-lang="en" hidden>No change event has been recorded since the baseline.</span>
-      </div>
+      <div class="empty-state">No change event has been recorded since the baseline.</div>
     )}
   </section>
 </Layout>

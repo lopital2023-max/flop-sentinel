@@ -10,7 +10,9 @@ const expectedPrefix = `/${baseSegment ? `${baseSegment}/` : ""}`;
 for (const page of pages) {
   const contents = await readFile(path.join(root, page), "utf8");
   assert.match(contents, /<title>[^<]+<\/title>/, `${page} must have a title`);
-  assert.match(contents, /data-set-language="ja"/, `${page} must include language controls`);
+  assert.match(contents, /<html lang="en">/, `${page} must declare English as its language`);
+  assert.doesNotMatch(contents, /data-(?:lang|language|set-language)=/u, `${page} must not include obsolete language controls`);
+  assert.doesNotMatch(contents, /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/u, `${page} must contain English-only public copy`);
   assert.match(contents, /http-equiv="Content-Security-Policy"/, `${page} must include a CSP meta fallback`);
   assert.doesNotMatch(contents, /<style(?:\s|>)/i, `${page} must not use inline style blocks`);
   const scripts = [...contents.matchAll(/<script\b([^>]*)>/gi)];

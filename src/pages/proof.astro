@@ -9,10 +9,8 @@ import Layout from "../layouts/Layout.astro";
 >
   <header class="page-intro">
     <p class="eyebrow">CRYPTOGRAPHIC PROVENANCE</p>
-    <h1 data-lang="ja">観測から署名まで、ブラウザで再検証する。</h1>
-    <h1 data-lang="en" hidden>Re-verify every step, in your browser.</h1>
-    <p data-lang="ja">公開snapshotとartifactのSHA-256、JCS manifest連鎖、reviewed checkpointのEd25519署名を、このページが同一originから読み直して検証します。</p>
-    <p data-lang="en" hidden>This page re-fetches the public snapshots and artifacts, then verifies their SHA-256 hashes, the JCS manifest chain, and the reviewed checkpoint's Ed25519 signature.</p>
+    <h1>Re-verify every step, in your browser.</h1>
+    <p>This page re-fetches the public snapshots and artifacts, then verifies their SHA-256 hashes, the JCS manifest chain, and the reviewed checkpoint's Ed25519 signature.</p>
   </header>
 
   <section id="proof-panel" class="proof-panel" data-proof-state="loading" aria-live="polite">
@@ -20,14 +18,10 @@ import Layout from "../layouts/Layout.astro";
       <span class="proof-state-icon" aria-hidden="true"></span>
       <div>
         <p class="micro-label">LOCAL VERIFICATION</p>
-        <strong data-lang="ja" data-proof-label="loading">証跡ファイルを検証中…</strong>
-        <strong data-lang="en" data-proof-label="loading" hidden>Verifying published evidence…</strong>
-        <strong data-lang="ja" data-proof-label="verified">暗号学的検証に成功</strong>
-        <strong data-lang="en" data-proof-label="verified" hidden>Cryptographic verification passed</strong>
-        <strong data-lang="ja" data-proof-label="verified-unreviewed">連鎖は有効・最新観測は未署名</strong>
-        <strong data-lang="en" data-proof-label="verified-unreviewed" hidden>Chain valid · latest observation not reviewed</strong>
-        <strong data-lang="ja" data-proof-label="failed">検証に失敗</strong>
-        <strong data-lang="en" data-proof-label="failed" hidden>Verification failed</strong>
+        <strong data-proof-label="loading">Verifying published evidence…</strong>
+        <strong data-proof-label="verified">Cryptographic verification passed</strong>
+        <strong data-proof-label="verified-unreviewed">Chain valid · latest observation not reviewed</strong>
+        <strong data-proof-label="failed">Verification failed</strong>
       </div>
     </div>
 
@@ -35,8 +29,7 @@ import Layout from "../layouts/Layout.astro";
     <div id="proof-details" class="proof-details" hidden>
       <article class="proof-card">
         <p class="micro-label">LATEST MANIFEST <span id="proof-manifest-sequence"></span></p>
-        <h2 data-lang="ja">観測manifest</h2>
-        <h2 data-lang="en" hidden>Observation manifest</h2>
+        <h2>Observation manifest</h2>
         <dl>
           <div><dt>JCS SHA-256</dt><dd><code id="proof-manifest-hash"></code></dd></div>
           <div><dt>Observed at</dt><dd id="proof-observed-at"></dd></div>
@@ -60,16 +53,14 @@ import Layout from "../layouts/Layout.astro";
     <div class="section-heading">
       <div>
         <p class="eyebrow">WHAT IT PROVES</p>
-        <h2 data-lang="ja">完全性と承認者。公式性ではない。</h2>
-        <h2 data-lang="en" hidden>Integrity and reviewer—not official status.</h2>
+        <h2>Integrity and reviewer—not official status.</h2>
       </div>
-      <p data-lang="ja">成功は、公開ファイルがmanifest作成後に変わっておらず、そのcheckpointを表示DIDの鍵が署名したことを示します。</p>
-      <p data-lang="en" hidden>A pass means the files have not changed since the manifest was made and the displayed DID's key signed that checkpoint.</p>
+      <p>A pass means the files have not changed since the manifest was made and the displayed DID's key signed that checkpoint.</p>
     </div>
     <div class="principle-grid">
-      <article class="principle"><span class="number">01</span><h3>Content address</h3><p data-lang="ja">raw responseと生成JSONをbytes単位でSHA-256照合。</p><p data-lang="en" hidden>SHA-256 over exact raw-response and generated-JSON bytes.</p></article>
-      <article class="principle"><span class="number">02</span><h3>Hash chain</h3><p data-lang="ja">各manifestが直前のmanifest hashを固定し、履歴の抜差しを検出。</p><p data-lang="en" hidden>Each manifest binds its predecessor, exposing insertions or removals.</p></article>
-      <article class="principle"><span class="number">03</span><h3>Human checkpoint</h3><p data-lang="ja">JCS正規化payloadを既存DIDで署名。FLOP公式認定、報酬資格、オンチェーン証明ではありません。</p><p data-lang="en" hidden>The existing DID signs a JCS payload. This is not FLOP endorsement, reward eligibility, or on-chain proof.</p></article>
+      <article class="principle"><span class="number">01</span><h3>Content address</h3><p>SHA-256 over exact raw-response and generated-JSON bytes.</p></article>
+      <article class="principle"><span class="number">02</span><h3>Hash chain</h3><p>Each manifest binds its predecessor, exposing insertions or removals.</p></article>
+      <article class="principle"><span class="number">03</span><h3>Human checkpoint</h3><p>The existing DID signs a JCS payload. This is not FLOP endorsement, reward eligibility, or on-chain proof.</p></article>
     </div>
   </section>
   <script>
