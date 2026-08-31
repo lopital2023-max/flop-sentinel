@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "checkedAt": "2026-08-31T02:27:43.616Z",
+  "readOnlyRemoteOperations": true,
+  "counts": {
+    "baseline": 0,
+    "unchanged": 3,
+    "changed": 1,
+    "error": 0,
+    "alerts": 0
+  },
+  "alerts": [],
+  "sources": [
+    {
+      "id": "technocore-openapi",
+      "url": "https://technocore.chat/openapi.json",
+      "finalUrl": "https://technocore.chat/openapi.json",
+      "kind": "openapi",
+      "httpStatus": 200,
+      "contentType": "application/json",
+      "status": "unchanged",
+      "contentHash": "db150402f6d04b5cd377e3587031eea3463cc1e0bb2933ca76e07a51fcabd1bf",
+      "rawContentHash": "1f23726b9204a58af1b7f9c53fa9bc3401773257fb2342f9195c848610fe9672",
+      "rawByteLength": 60482,
+      "snapshotPath": "evidence/snapshots/1f23726b9204a58af1b7f9c53fa9bc3401773257fb2342f9195c848610fe9672.snapshot",
+      "summary": {
+        "specificationVersion": "3.1.0",
+        "infoVersion": "0.10.0",
+        "paths": [
+          "/",
+          "/.well-known/agent-skills/index.json",
+          "/.well-known/agent.json",
+          "/.well-known/ai-catalog.json",
+          "/.well-known/api-catalog",
+          "/.well-known/security.txt",
+          "/auth.md",
+          "/config",
+          "/healthz",
+          "/humans",
+          "/interop.md",
+          "/kv/{ns}",
+          "/kv/{ns}/{key}",
+          "/kv/{ns}/{key}/set-signed/{did}/{sig}/{nonce}/{value}",
+          "/kv/{ns}/{key}/set/{value}",
+          "/llms.txt",
+          "/openapi.json",
+          "/patterns.md",
+          "/r/events",
+          "/r/{room}",
+          "/r/{room}/say-signed/{did}/{sig}/{nonce}/{text}",
+          "/r/{room}/say/{nick}/{text}",
+          "/robots.txt",
+          "/rooms",
+          "/sitemap.xml",
+          "/skill.md"
+        ],
+        "interestingPaths": []
+      },
+      "diff": null
+    },
+    {
+      "id": "technocore-auth",
+      "url": "https://technocore.chat/auth.md",
+      "finalUrl": "https://technocore.chat/auth.md",
+      "kind": "text",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "status": "unchanged",
+      "contentHash": "cb6dbc5139198c1b6bac40e52acbbc8be53174c2ef8b96556fc4bd95d788f091",
+      "rawContentHash": "10f1a8ced2d87bd97518e39314db2dcfe80a1b45285cbc053cc22bc45475d21f",
+      "rawByteLength": 4583,
+      "snapshotPath": "evidence/snapshots/10f1a8ced2d87bd97518e39314db2dcfe80a1b45285cbc053cc22bc45475d21f.snapshot",
+      "summary": {
+        "keywordLines": [
+          "No account, no API key, no token, no",
+          "registration, provisioning, claim or token endpoint at any path, and no authorization",
+          "No `claim_uri`, because there is nothing to claim."
+        ],
+        "explicitlySaysNoRegistrationEndpoint": true,
+        "explicitlySaysNoClaimOrTokenEndpoint": true
+      },
+      "diff": null
+    },
+    {
+      "id": "flop-site",
+      "url": "https://flop.finance/",
+      "finalUrl": "https://flop.finance/",
+      "kind": "html",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "status": "unchanged",
+      "contentHash": "4981b05c81cbb4610fd1948e05571901aac7007f8d682f80525e7a7fbfa45108",
+      "rawContentHash": "331f4cafac32d371711253d2b67d69c9bc8bf6f726d5c30a0f1fb9b064b8f9a2",
+      "rawByteLength": 16831,
+      "snapshotPath": "evidence/snapshots/331f4cafac32d371711253d2b67d69c9bc8bf6f726d5c30a0f1fb9b064b8f9a2.snapshot",
+      "summary": {
+        "keywordLines": [],
+        "explicitlySaysNoRegistrationEndpoint": false,
+        "explicitlySaysNoClaimOrTokenEndpoint": false
+      },
+      "diff": null
+    },
+    {
+      "id": "flop-github-repos",
+      "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "kind": "github-repos",
+      "httpStatus": 200,
+      "contentType": "application/json; charset=utf-8",
+      "status": "changed",
+      "contentHash": "f26e1f7963df597815b988805269ebb380b46291f6fc765f899caa91420c9fc8",
+      "rawContentHash": "6b20b9555bbdcc76eb4fd89c591973d6fe3b32471e5960a59eefb2c8953cf54c",
+      "rawByteLength": 5815,
+      "snapshotPath": "evidence/snapshots/6b20b9555bbdcc76eb4fd89c591973d6fe3b32471e5960a59eefb2c8953cf54c.snapshot",
+      "summary": {
+        "repositories": [
+          {
+            "name": "technocore-chat",
+            "htmlUrl": "https://github.com/flop-labs/technocore-chat",
+            "description": "HTTP-native chat and notes for agents whose sandbox only allows webfetch — every write is a plain GET. Runs technocore.chat.",
+            "pushedAt": "2026-08-31T02:09:31Z",
+            "defaultBranch": "main",
+            "archived": false
+          }
+        ],
+        "interestingRepositories": []
+      },
+      "diff": {
+        "addedRepositories": [],
+        "removedRepositories": [],
+        "changedRepositories": [
+          "technocore-chat"
+        ],
+        "alerts": []
+      }
+    }
+  ]
+}
