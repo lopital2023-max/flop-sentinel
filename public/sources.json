@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "type": "flop-sentinel-source-register",
-  "generatedAt": "2026-08-31T02:27:43.616Z",
+  "generatedAt": "2026-09-01T02:31:12.313Z",
   "collectionPolicy": {
     "networkMode": "read-only",
     "allowlistOnly": true,
@@ -16,15 +16,15 @@
       "kind": "openapi",
       "url": "https://technocore.chat/openapi.json",
       "finalUrl": "https://technocore.chat/openapi.json",
-      "observedAt": "2026-08-31T02:27:43.616Z",
+      "observedAt": "2026-09-01T02:31:12.313Z",
       "httpStatus": 200,
       "contentType": "application/json",
-      "observationStatus": "unchanged",
-      "normalizedSha256": "db150402f6d04b5cd377e3587031eea3463cc1e0bb2933ca76e07a51fcabd1bf",
+      "observationStatus": "changed",
+      "normalizedSha256": "7a67d7b3eecd0acb766d47e1d0264f094acdd748d24845610c44e2566555d351",
       "raw": {
-        "sha256": "1f23726b9204a58af1b7f9c53fa9bc3401773257fb2342f9195c848610fe9672",
-        "bytes": 60482,
-        "path": "evidence/snapshots/1f23726b9204a58af1b7f9c53fa9bc3401773257fb2342f9195c848610fe9672.snapshot"
+        "sha256": "5ba02a3e5d777e21476d2e2100798e70b4a6bbb0bcde76efcbc57f799b7bac6f",
+        "bytes": 73391,
+        "path": "evidence/snapshots/5ba02a3e5d777e21476d2e2100798e70b4a6bbb0bcde76efcbc57f799b7bac6f.snapshot"
       }
     },
     {
@@ -32,15 +32,15 @@
       "kind": "text",
       "url": "https://technocore.chat/auth.md",
       "finalUrl": "https://technocore.chat/auth.md",
-      "observedAt": "2026-08-31T02:27:43.616Z",
+      "observedAt": "2026-09-01T02:31:12.313Z",
       "httpStatus": 200,
       "contentType": "text/plain; charset=utf-8",
-      "observationStatus": "unchanged",
-      "normalizedSha256": "cb6dbc5139198c1b6bac40e52acbbc8be53174c2ef8b96556fc4bd95d788f091",
+      "observationStatus": "changed",
+      "normalizedSha256": "7a35bbcb3cebdbe15e21bb26b5e9a24ac3a39d992da6e40cb57e7957b9f06f66",
       "raw": {
-        "sha256": "10f1a8ced2d87bd97518e39314db2dcfe80a1b45285cbc053cc22bc45475d21f",
-        "bytes": 4583,
-        "path": "evidence/snapshots/10f1a8ced2d87bd97518e39314db2dcfe80a1b45285cbc053cc22bc45475d21f.snapshot"
+        "sha256": "ae4c61d5d6d4b13ec24467a1a66f139c132e039a7180790a914587d642534ddb",
+        "bytes": 5200,
+        "path": "evidence/snapshots/ae4c61d5d6d4b13ec24467a1a66f139c132e039a7180790a914587d642534ddb.snapshot"
       }
     },
     {
@@ -48,15 +48,15 @@
       "kind": "html",
       "url": "https://flop.finance/",
       "finalUrl": "https://flop.finance/",
-      "observedAt": "2026-08-31T02:27:43.616Z",
+      "observedAt": "2026-09-01T02:31:12.313Z",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "observationStatus": "unchanged",
       "normalizedSha256": "4981b05c81cbb4610fd1948e05571901aac7007f8d682f80525e7a7fbfa45108",
       "raw": {
-        "sha256": "331f4cafac32d371711253d2b67d69c9bc8bf6f726d5c30a0f1fb9b064b8f9a2",
+        "sha256": "b88440731bf5cb98068e8c32845a1a68b3cc5e2ad339ea60ed1bc97f325a3de4",
         "bytes": 16831,
-        "path": "evidence/snapshots/331f4cafac32d371711253d2b67d69c9bc8bf6f726d5c30a0f1fb9b064b8f9a2.snapshot"
+        "path": "evidence/snapshots/b88440731bf5cb98068e8c32845a1a68b3cc5e2ad339ea60ed1bc97f325a3de4.snapshot"
       }
     },
     {
@@ -64,15 +64,15 @@
       "kind": "github-repos",
       "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
       "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-      "observedAt": "2026-08-31T02:27:43.616Z",
+      "observedAt": "2026-09-01T02:31:12.313Z",
       "httpStatus": 200,
       "contentType": "application/json; charset=utf-8",
       "observationStatus": "changed",
-      "normalizedSha256": "f26e1f7963df597815b988805269ebb380b46291f6fc765f899caa91420c9fc8",
+      "normalizedSha256": "8eaf377d812722180f1f0416fde32b2f1bf035244cf4731c23605727c7efce53",
       "raw": {
-        "sha256": "6b20b9555bbdcc76eb4fd89c591973d6fe3b32471e5960a59eefb2c8953cf54c",
+        "sha256": "20ea06f9d7a91836cf85cc1d7a64524654727e1c1a6455d68fd4b9c35878a93d",
         "bytes": 5815,
-        "path": "evidence/snapshots/6b20b9555bbdcc76eb4fd89c591973d6fe3b32471e5960a59eefb2c8953cf54c.snapshot"
+        "path": "evidence/snapshots/20ea06f9d7a91836cf85cc1d7a64524654727e1c1a6455d68fd4b9c35878a93d.snapshot"
       }
     }
   ],

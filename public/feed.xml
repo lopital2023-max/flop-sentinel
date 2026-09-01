@@ -2,10 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>urn:flop-sentinel:source-changes</id>
   <title>FLOP Sentinel source changes</title>
-  <updated>2026-08-31T02:27:43.616Z</updated>
+  <updated>2026-09-01T02:31:12.313Z</updated>
   <link rel="self" href="https://lopital2023-max.github.io/flop-sentinel/feed.xml" />
   <link rel="alternate" href="https://lopital2023-max.github.io/flop-sentinel/changes/" />
   <subtitle>Unofficial official-source change signals; review primary evidence before acting.</subtitle>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-01T02%3A31%3A12.313Z%3Atechnocore-openapi</id>
+    <title>technocore-openapi: source-change</title>
+    <updated>2026-09-01T02:31:12.313Z</updated>
+    <link rel="alternate" href="https://technocore.chat/openapi.json" />
+    <summary>Service version changed from 0.10.0 to 0.11.1. Added paths: /.well-known/mcp/server-card.json, /r/{room}/export.</summary>
+    <category term="notice" />
+  </entry>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-01T02%3A31%3A12.313Z%3Atechnocore-auth</id>
+    <title>technocore-auth: source-change</title>
+    <updated>2026-09-01T02:31:12.313Z</updated>
+    <link rel="alternate" href="https://technocore.chat/auth.md" />
+    <summary>The normalized content hash changed.</summary>
+    <category term="notice" />
+  </entry>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-01T02%3A31%3A12.313Z%3Aflop-github-repos</id>
+    <title>flop-github-repos: source-change</title>
+    <updated>2026-09-01T02:31:12.313Z</updated>
+    <link rel="alternate" href="https://api.github.com/orgs/flop-labs/repos?per_page=100&amp;type=public" />
+    <summary>Updated repositories: technocore-chat.</summary>
+    <category term="notice" />
+  </entry>
   <entry>
     <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-08-31T02%3A27%3A43.616Z%3Aflop-github-repos</id>
     <title>flop-github-repos: source-change</title>
