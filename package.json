@@ -30,6 +30,6 @@
     "test": "node --test"
   },
   "devDependencies": {
-    "astro": "7.2.7"
+    "astro": "7.2.9"
   }
 }
