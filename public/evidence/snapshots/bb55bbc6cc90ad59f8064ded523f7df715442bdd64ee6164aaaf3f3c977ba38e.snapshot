@@ -1,0 +1,368 @@
+<!doctype html>
+<!--
+  GENERATED FILE - DO NOT EDIT BY HAND.
+  Source: the .template.html + i18n/<locale>.json beside it
+  Palette: DESIGN.md (substituted at build)
+  Regenerate: python3 scripts/gen_flop_finance.py   (--check verifies sync)
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FLOP</title>
+<meta name="description" content="$FLOP is food for your AI agent." />
+<meta name="theme-color" content="#0A1128" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="FLOP" />
+<meta property="og:title" content="FLOP" />
+<meta property="og:description" content="$FLOP is food for your AI agent." />
+<meta property="og:url" content="https://flop.finance/" />
+<meta property="og:image" content="https://flop.finance/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The FLOP logotype in Ice White with the accent Chip, on a navy ground." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@flop_labs" />
+
+<link rel="canonical" href="https://flop.finance/" />
+<link rel="alternate" hreflang="en" href="https://flop.finance/" />
+<link rel="alternate" hreflang="zh" href="https://flop.finance/zh/" />
+<link rel="alternate" hreflang="ja" href="https://flop.finance/ja/" />
+<link rel="alternate" hreflang="ko" href="https://flop.finance/ko/" />
+<link rel="alternate" hreflang="ru" href="https://flop.finance/ru/" />
+<link rel="alternate" hreflang="ar" href="https://flop.finance/ar/" />
+<link rel="alternate" hreflang="pt-BR" href="https://flop.finance/pt-BR/" />
+<link rel="alternate" hreflang="es" href="https://flop.finance/es/" />
+<link rel="alternate" hreflang="fr" href="https://flop.finance/fr/" />
+<link rel="alternate" hreflang="de" href="https://flop.finance/de/" />
+<link rel="alternate" hreflang="tr" href="https://flop.finance/tr/" />
+<link rel="alternate" hreflang="x-default" href="https://flop.finance/" />
+<link rel="icon" href="/assets/flop-chip-favicon.svg" type="image/svg+xml" />
+
+
+<style type="text/css">@font-face {font-family:'Space Mono';font-style:normal;font-weight:700;src:url(/cf-fonts/s/space-mono/5.2.9/latin-ext/700/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Space Mono';font-style:normal;font-weight:700;src:url(/cf-fonts/s/space-mono/5.2.9/vietnamese/700/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Space Mono';font-style:normal;font-weight:700;src:url(/cf-fonts/s/space-mono/5.2.9/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}</style>
+
+<!-- Structured data. This is what a search engine or an agent reads to learn
+     that the accounts below are the same organisation as this domain.
+
+     This list is deliberately NOT a copy of the registry in
+     docs/DOMAINS_AND_SOCIALS.md — some live accounts are held back from this
+     domain on purpose. An account being live is not a reason to add it here.
+     Read README.md §"Crawlers and agents" before touching this array.
+
+     `application/ld+json` is a DATA BLOCK, not an executed script, so the CSP's
+     `script-src` (which has no 'self' and no 'unsafe-inline') does not apply.
+     Verified in-browser against the exact `_headers` policy: no
+     securitypolicyviolation, element present in the DOM. Do not "fix" this by
+     adding 'self' to script-src.
+
+     No email field on purpose. Cloudflare's Email Address Obfuscation rewrites
+     addresses it finds in the HTML, and inside a JSON block that would produce
+     invalid JSON. The page carries no contact address at all now; if one is
+     ever added to the body it needs the email_off markers — see README.md
+     §"The contact address". -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FLOP",
+  "url": "https://flop.finance/",
+  "logo": "https://flop.finance/assets/flop-lockup-reverse.svg",
+  "description": "$FLOP is food for your AI agent.",
+  "sameAs": [
+    "https://x.com/flop_labs",
+    "https://www.youtube.com/@flop_labs",
+    "https://www.tiktok.com/@flop_labs",
+    "https://github.com/flop-labs"
+  ]
+}
+</script>
+
+<style>
+  /* Palette values are the specified hex from Logo & Usage Standards V1.0 §4,
+     which is also DESIGN.md's canonical palette. The lockup SVG is the approved
+     master unaltered, so its own Ice White sits ~3/255 off this ground's spec
+     Ice White — imperceptible, and the two never touch. See
+     docs/brand/official/README.md. */
+  :root {
+    --base: #0A1128;       /* the ground */
+    --ice-white: #F5F7FA;  /* the word mark, and the tagline */
+    --accent: #00B4D8;     /* the Chip, and the links — nothing else */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--base);
+    color: var(--ice-white);
+    font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  main {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Page margin sits outside the logo's own clear space, never inside it.
+       The `svh` terms only ever *reduce* the width-derived value, so a short
+       viewport tightens the stack and a tall one is left exactly as it was. */
+    padding: clamp(24px, min(6vw, 5svh), 64px);
+    gap: clamp(32px, min(7vw, 7svh), 72px);
+  }
+
+  /* The delivered SVG already carries the mandated 4X clear space inside its
+     own canvas (measured: cap height 8 modules => X; padding = 4X on the long
+     edges, more on the short). So the <img> box IS artwork + 4X, and the flex
+     `gap` above is headroom on top of the minimum — never a substitute for it.
+
+     Minimum-size floor: the artwork spans 81.6% of the file width, so the
+     One-color threshold of 200px artwork needs ~245px of file width. At the
+     320px viewport floor, 78vw = 250px file => 204px of artwork. The two-tone
+     lockup therefore stays legal at every viewport, and the hard 120px
+     logotype minimum is never approached.
+
+     The `62svh` term keeps the whole stack inside a short desktop viewport —
+     without it the apply line falls below a fold this page gives no cue to
+     scroll past. `max(..., 250px)` is what keeps the height term from ever
+     breaching the floor above: on a landscape phone (844x390) 62svh would be
+     242px of file => 197px of artwork, under the 200px threshold at which V1.0
+     requires the One-color version. Clamped at 250px it stays at 204px of
+     artwork and the page simply scrolls instead. Brand floor beats fold.
+     If you retune any of these numbers, redo this arithmetic. */
+  .lockup {
+    display: block;
+    width: min(78vw, max(62svh, 250px), 620px);
+    height: auto;
+  }
+
+  /* The tagline is page copy, not part of the lockup: the standard forbids
+     locking a tagline to the logo. It is kept visually independent and well
+     outside the clear space. */
+  .tagline {
+    margin: 0;
+    max-width: 34ch;
+    font-size: clamp(19px, 4.4vw, 34px);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* Launch facts + contact. Page copy like the tagline: same voice, one step
+     down in scale so the tagline stays the loudest line under the lockup. */
+  .points {
+    margin: 0;
+    max-width: 46ch;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, min(3vw, 2.6svh), 22px);
+    font-size: clamp(14px, 2.6vw, 19px);
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .points p { margin: 0; }
+
+  /* The Chip carries the colour — but a link has to read as a link, so the
+     accent is spent on links (including the social row) and nowhere else. */
+  .points a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Each item on the apply line is atomic. Without this the line breaks inside
+     a label — "GPU / providers (miners)" — because the interpuncts are not the
+     only break opportunities the browser sees. Wrapping is still allowed, but
+     only at the separators. */
+  .apply a { white-space: nowrap; }
+
+  /* The classic follow row. Icons are links, so they take the accent like any
+     other link; no underline, because there is no text to underline. The tap
+     target is padded out to ~44px per platform guidance while the glyph itself
+     stays at 22px. */
+  .social {
+    display: flex;
+    gap: clamp(6px, 2vw, 14px);
+  }
+
+  .social a {
+    display: flex;
+    padding: 11px;
+    color: var(--accent);
+    border-radius: 6px;
+  }
+
+  .social svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+  }
+
+  @media (hover: hover) {
+    .social a:hover { color: var(--ice-white); }
+  }
+
+  .social a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Language switcher. <details> because this page's CSP has no 'self' and no
+     'unsafe-inline' in script-src — the landing pages' JS dropdown and their
+     flop_lang cookie are both impossible here, so the picker has to be plain
+     HTML. A <details> disclosure is exactly that: keyboard accessible, no JS,
+     and it degrades to an always-open list if CSS fails. The consequence is
+     that a visitor's choice is NOT remembered between visits; hreflang is what
+     points search engines at the right one. */
+  .lang {
+    font-size: clamp(12px, 2.2vw, 14px);
+    text-align: center;
+  }
+
+  .lang summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--accent);
+    padding: 6px 10px;
+  }
+
+  .lang summary::-webkit-details-marker { display: none; }
+
+  .lang summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .lang ul {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 14px;
+    max-width: 44ch;
+  }
+
+  .lang a {
+    color: var(--ice-white);
+    text-decoration: none;
+    opacity: 0.75;
+  }
+
+  .lang a[aria-current="true"] { color: var(--accent); opacity: 1; }
+
+  @media (hover: hover) {
+    .lang a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    main > * { animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    main > :nth-child(2) { animation-delay: 0.12s; }
+    main > :nth-child(3) { animation-delay: 0.24s; }
+    /* The social row is main's 4th child. Without its own delay it animates in
+       lockstep with the lockup and the stagger visibly breaks. */
+    main > :nth-child(4) { animation-delay: 0.36s; }
+    /* The language switcher is the 5th child. */
+    main > :nth-child(5) { animation-delay: 0.48s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <!-- Approved master, byte-for-byte. Never recolour, crop, rotate, or re-export
+         it, and never apply a CSS filter to it. Reverse lockup is approved on
+         Base only. -->
+    <img
+      class="lockup"
+      src="/assets/flop-lockup-reverse.svg"
+      alt="FLOP"
+      width="2000"
+      height="1000"
+      fetchpriority="high"
+    />
+    <!-- lang/dir are load-bearing, not decoration: the tagline stays English in
+         every locale, and inside an RTL page bidi otherwise moves the leading "$"
+         and the trailing "." to the wrong ends — observed as "FLOP is food for$"
+         on /ar/. Same reason the @handle below is marked. -->
+    <p class="tagline" lang="en" dir="ltr">$FLOP is food for your AI&nbsp;agent.</p>
+    <div class="points">
+      <p>No pre-sale</p>
+      <p>No VCs</p>
+      <p>100% fair launch</p>
+      <p>Follow <a href="https://x.com/flop_labs" rel="me noopener" dir="ltr">@flop_labs</a> for airdrop eligibility</p>
+      <!-- Applications. These are OUR URLs; `_redirects` maps them to the
+           Google Forms and is the only place those form ids live. Never paste
+           a docs.google.com URL back in here — the indirection is what lets a
+           re-created form be fixed in one line without breaking every link
+           already loose in the world. deploy.sh verifies the targets still
+           answer as FLOP forms before it will publish.
+
+           A redirect to Google is a plain outbound navigation, so the CSP in
+           `_headers` needs nothing: `form-action 'none'` governs submissions
+           made FROM this page, and there is no live `navigate-to` directive.
+           Only ever embedding a form in an <iframe> would need `frame-src`.
+
+           All three forms now exist, so all three are links. -->
+      <p class="apply">Apply —
+        <a href="/apply/miner" target="_blank" rel="noopener">GPU providers (miners)</a> ·
+        <a href="/apply/validator" target="_blank" rel="noopener">Validators</a> ·
+        <a href="/apply/kol" target="_blank" rel="noopener">KOLs & creators</a>
+      </p>
+      <!-- The teaser. Deliberately NOT a template placeholder: render() raises on a key
+           missing from any catalog, so a placeholder means eleven translations of a
+           label that points at an English-only document. It is marked lang/dir for the
+           same bidi reason as the tagline and the @handle — inside /ar/ an unmarked
+           English string has its leading and trailing characters reordered. Same
+           treatment, same reason, documented in gen_flop_finance.py. -->
+      <p class="teaser" lang="en" dir="ltr"><a href="/teaser/">Read the teaser →</a></p>
+    </div>
+    <!-- This row is X only, and which accounts may appear on this domain at all
+         is decided in README.md §"Crawlers and agents" — not by what is marked
+         live in docs/DOMAINS_AND_SOCIALS.md. Never link a handle that is still
+         "Claim" in that table either: it invites someone else to squat it.
+
+         Icons are inline SVG because `img-src 'self'` forbids an icon CDN, and
+         because an <img> cannot inherit the accent. Paths are the standard
+         simple-icons glyphs on a 24×24 grid. -->
+    <nav class="social" aria-label="FLOP on social media">
+      <a href="https://x.com/flop_labs" rel="me noopener" aria-label="FLOP on X">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+      </a>
+    </nav>
+    <details class="lang">
+      <summary>Language · English</summary>
+      <ul>
+        <li><a href="/?lang=en" hreflang="en" lang="en" aria-current="true">English</a></li>
+        <li><a href="/zh/" hreflang="zh" lang="zh">中文</a></li>
+        <li><a href="/ja/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/ko/" hreflang="ko" lang="ko">한국어</a></li>
+        <li><a href="/ru/" hreflang="ru" lang="ru">Русский</a></li>
+        <li><a href="/ar/" hreflang="ar" lang="ar">العربية</a></li>
+        <li><a href="/pt-BR/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+        <li><a href="/es/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/fr/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/de/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/tr/" hreflang="tr" lang="tr">Türkçe</a></li>
+      </ul>
+    </details>
+  </main>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2c3a630a01284c71a8cfbf10db1c75db"}'></script><!-- Cloudflare Pages Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"81ccefe1eb5e48fcb5e3294a233a055c","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

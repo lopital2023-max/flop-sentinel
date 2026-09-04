@@ -2,10 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>urn:flop-sentinel:source-changes</id>
   <title>FLOP Sentinel source changes</title>
-  <updated>2026-09-03T05:13:35.367Z</updated>
+  <updated>2026-09-04T02:38:30.365Z</updated>
   <link rel="self" href="https://lopital2023-max.github.io/flop-sentinel/feed.xml" />
   <link rel="alternate" href="https://lopital2023-max.github.io/flop-sentinel/changes/" />
   <subtitle>Unofficial official-source change signals; review primary evidence before acting.</subtitle>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-04T02%3A38%3A30.365Z%3Aflop-github-repos</id>
+    <title>flop-github-repos: source-change</title>
+    <updated>2026-09-04T02:38:30.365Z</updated>
+    <link rel="alternate" href="https://api.github.com/orgs/flop-labs/repos?per_page=100&amp;type=public" />
+    <summary>Added repositories: .github. Updated repositories: tclk, technocore-chat.</summary>
+    <category term="notice" />
+  </entry>
   <entry>
     <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-03T05%3A13%3A35.367Z%3Atechnocore-openapi</id>
     <title>technocore-openapi: source-change</title>
