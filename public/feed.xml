@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>urn:flop-sentinel:source-changes</id>
   <title>FLOP Sentinel source changes</title>
-  <updated>2026-09-04T02:38:30.365Z</updated>
+  <updated>2026-09-05T02:31:27.095Z</updated>
   <link rel="self" href="https://lopital2023-max.github.io/flop-sentinel/feed.xml" />
   <link rel="alternate" href="https://lopital2023-max.github.io/flop-sentinel/changes/" />
   <subtitle>Unofficial official-source change signals; review primary evidence before acting.</subtitle>
