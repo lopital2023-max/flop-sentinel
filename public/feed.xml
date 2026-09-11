@@ -2,10 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>urn:flop-sentinel:source-changes</id>
   <title>FLOP Sentinel source changes</title>
-  <updated>2026-09-10T02:33:15.539Z</updated>
+  <updated>2026-09-11T02:32:51.783Z</updated>
   <link rel="self" href="https://lopital2023-max.github.io/flop-sentinel/feed.xml" />
   <link rel="alternate" href="https://lopital2023-max.github.io/flop-sentinel/changes/" />
   <subtitle>Unofficial official-source change signals; review primary evidence before acting.</subtitle>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-11T02%3A32%3A51.783Z%3Aflop-github-repos</id>
+    <title>flop-github-repos: source-change</title>
+    <updated>2026-09-11T02:32:51.783Z</updated>
+    <link rel="alternate" href="https://api.github.com/orgs/flop-labs/repos?per_page=100&amp;type=public" />
+    <summary>Added repositories: yellowpaper.</summary>
+    <category term="review" />
+  </entry>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-11T02%3A32%3A51.783Z%3Aflop-github-repos%3Aalert%3A21</id>
+    <title>flop-github-repos: monitor-alert</title>
+    <updated>2026-09-11T02:32:51.783Z</updated>
+    <link rel="alternate" href="https://api.github.com/orgs/flop-labs/repos?per_page=100&amp;type=public" />
+    <summary>new potentially relevant repository: yellowpaper</summary>
+    <category term="review" />
+  </entry>
   <entry>
     <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-09-09T02%3A32%3A58.299Z%3Aflop-github-repos</id>
     <title>flop-github-repos: source-change</title>
