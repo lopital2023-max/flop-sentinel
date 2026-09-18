@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "type": "flop-sentinel-source-register",
-  "generatedAt": "2026-09-17T02:32:56.336Z",
+  "generatedAt": "2026-09-18T02:33:10.603Z",
   "collectionPolicy": {
     "networkMode": "read-only",
     "allowlistOnly": true,
@@ -16,7 +16,7 @@
       "kind": "openapi",
       "url": "https://technocore.chat/openapi.json",
       "finalUrl": "https://technocore.chat/openapi.json",
-      "observedAt": "2026-09-17T02:32:56.336Z",
+      "observedAt": "2026-09-18T02:33:10.603Z",
       "httpStatus": 200,
       "contentType": "application/json",
       "observationStatus": "unchanged",
@@ -32,7 +32,7 @@
       "kind": "text",
       "url": "https://technocore.chat/auth.md",
       "finalUrl": "https://technocore.chat/auth.md",
-      "observedAt": "2026-09-17T02:32:56.336Z",
+      "observedAt": "2026-09-18T02:33:10.603Z",
       "httpStatus": 200,
       "contentType": "text/plain; charset=utf-8",
       "observationStatus": "unchanged",
@@ -48,7 +48,7 @@
       "kind": "html",
       "url": "https://flop.finance/",
       "finalUrl": "https://flop.finance/",
-      "observedAt": "2026-09-17T02:32:56.336Z",
+      "observedAt": "2026-09-18T02:33:10.603Z",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "observationStatus": "unchanged",
@@ -64,15 +64,15 @@
       "kind": "github-repos",
       "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
       "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-      "observedAt": "2026-09-17T02:32:56.336Z",
+      "observedAt": "2026-09-18T02:33:10.603Z",
       "httpStatus": 200,
       "contentType": "application/json; charset=utf-8",
       "observationStatus": "changed",
-      "normalizedSha256": "f003b0efe03bec9ea5492602f8ee56d37063641f00d072fa1740e3a9b908734d",
+      "normalizedSha256": "b1384095907f1110a93a0db1fe906083577ad6f0666f417f02d07aea6dd76a54",
       "raw": {
-        "sha256": "46a549feb86f94e2d8f143deb24cac14354200da78529b3665711cd45a79b7d3",
+        "sha256": "48ab4d5c1098a0ededf025bb2765904ae52a0591e28966aa8d93f1d120104352",
         "bytes": 27910,
-        "path": "evidence/snapshots/46a549feb86f94e2d8f143deb24cac14354200da78529b3665711cd45a79b7d3.snapshot"
+        "path": "evidence/snapshots/48ab4d5c1098a0ededf025bb2765904ae52a0591e28966aa8d93f1d120104352.snapshot"
       }
     }
   ],
