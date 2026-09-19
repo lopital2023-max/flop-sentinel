@@ -185,6 +185,14 @@
       "observedAt": "2026-09-18T02:33:10.603Z",
       "createdAt": "2026-09-18T02:33:11.613Z",
       "previousManifestHash": "0ddf8a219a349aa84ebabf624015e0bc8330da561d1b5dc6965a59c4b72d8620"
+    },
+    {
+      "sequence": 24,
+      "hash": "b11e3801d1ba53fd29a7a3107a831154776889377f7b6cebf12e5d7cf6451cbf",
+      "path": "evidence/manifests/000024-b11e3801d1ba53fd29a7a3107a831154776889377f7b6cebf12e5d7cf6451cbf.json",
+      "observedAt": "2026-09-19T02:31:34.098Z",
+      "createdAt": "2026-09-19T02:31:35.525Z",
+      "previousManifestHash": "2b1f75d6b5bb7b4978deccd1790ea067376a5edc18565709cdd1dc970ee31769"
     }
   ]
 }
