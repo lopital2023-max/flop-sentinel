@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "checkedAt": "2026-09-20T02:31:49.575Z",
+  "readOnlyRemoteOperations": true,
+  "counts": {
+    "baseline": 0,
+    "unchanged": 4,
+    "changed": 0,
+    "error": 0,
+    "alerts": 0
+  },
+  "alerts": [],
+  "sources": [
+    {
+      "id": "technocore-openapi",
+      "url": "https://technocore.chat/openapi.json",
+      "finalUrl": "https://technocore.chat/openapi.json",
+      "kind": "openapi",
+      "httpStatus": 200,
+      "contentType": "application/json",
+      "status": "unchanged",
+      "contentHash": "0cb0a3df065f80591fee5718a08fa8d10a2830075e052f867d5fe77514c76701",
+      "rawContentHash": "f5bece6ceafacc6f16d7df65d8c727367b3fbdc1ac8810eb0e3871d8679823b3",
+      "rawByteLength": 77348,
+      "snapshotPath": "evidence/snapshots/f5bece6ceafacc6f16d7df65d8c727367b3fbdc1ac8810eb0e3871d8679823b3.snapshot",
+      "summary": {
+        "specificationVersion": "3.1.0",
+        "infoVersion": "0.13.0",
+        "paths": [
+          "/",
+          "/.well-known/agent-skills/index.json",
+          "/.well-known/agent.json",
+          "/.well-known/ai-catalog.json",
+          "/.well-known/api-catalog",
+          "/.well-known/mcp/server-card.json",
+          "/.well-known/security.txt",
+          "/auth.md",
+          "/config",
+          "/healthz",
+          "/humans",
+          "/interop.md",
+          "/kv/{ns}",
+          "/kv/{ns}/{key}",
+          "/kv/{ns}/{key}/set-signed/{did}/{sig}/{nonce}/{value}",
+          "/kv/{ns}/{key}/set/{value}",
+          "/llms.txt",
+          "/openapi.json",
+          "/patterns.md",
+          "/r/events",
+          "/r/{room}",
+          "/r/{room}/export",
+          "/r/{room}/say-signed/{did}/{sig}/{nonce}/{text}",
+          "/r/{room}/say/{nick}/{text}",
+          "/robots.txt",
+          "/rooms",
+          "/sitemap.xml",
+          "/skill.md"
+        ],
+        "interestingPaths": []
+      },
+      "diff": null
+    },
+    {
+      "id": "technocore-auth",
+      "url": "https://technocore.chat/auth.md",
+      "finalUrl": "https://technocore.chat/auth.md",
+      "kind": "text",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "status": "unchanged",
+      "contentHash": "7a35bbcb3cebdbe15e21bb26b5e9a24ac3a39d992da6e40cb57e7957b9f06f66",
+      "rawContentHash": "ae4c61d5d6d4b13ec24467a1a66f139c132e039a7180790a914587d642534ddb",
+      "rawByteLength": 5200,
+      "snapshotPath": "evidence/snapshots/ae4c61d5d6d4b13ec24467a1a66f139c132e039a7180790a914587d642534ddb.snapshot",
+      "summary": {
+        "keywordLines": [
+          "No account, no API key, no token, no",
+          "registration, provisioning, claim or token endpoint at any path, and no authorization",
+          "No `claim_uri`, because there is nothing to claim."
+        ],
+        "explicitlySaysNoRegistrationEndpoint": true,
+        "explicitlySaysNoClaimOrTokenEndpoint": true
+      },
+      "diff": null
+    },
+    {
+      "id": "flop-site",
+      "url": "https://flop.finance/",
+      "finalUrl": "https://flop.finance/",
+      "kind": "html",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "status": "unchanged",
+      "contentHash": "f881af0deb4f209e3c7cc7d9757a26b2b5197bb7336d0d46d374150fb00f86e1",
+      "rawContentHash": "6ddb1b5e4d498d8acf3ce19ee14cc09d4c7fe1bae1f48ea7c9c291c8c99fe366",
+      "rawByteLength": 17757,
+      "snapshotPath": "evidence/snapshots/6ddb1b5e4d498d8acf3ce19ee14cc09d4c7fe1bae1f48ea7c9c291c8c99fe366.snapshot",
+      "summary": {
+        "keywordLines": [],
+        "explicitlySaysNoRegistrationEndpoint": false,
+        "explicitlySaysNoClaimOrTokenEndpoint": false
+      },
+      "diff": null
+    },
+    {
+      "id": "flop-github-repos",
+      "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "kind": "github-repos",
+      "httpStatus": 200,
+      "contentType": "application/json; charset=utf-8",
+      "status": "unchanged",
+      "contentHash": "b1384095907f1110a93a0db1fe906083577ad6f0666f417f02d07aea6dd76a54",
+      "rawContentHash": "86c8b49a54a4984a087472e3094541d77b38ec2ca4469f98293358eae2244950",
+      "rawByteLength": 27908,
+      "snapshotPath": "evidence/snapshots/86c8b49a54a4984a087472e3094541d77b38ec2ca4469f98293358eae2244950.snapshot",
+      "summary": {
+        "repositories": [
+          {
+            "name": ".github",
+            "htmlUrl": "https://github.com/flop-labs/.github",
+            "description": null,
+            "pushedAt": "2026-09-11T04:35:47Z",
+            "defaultBranch": "main",
+            "archived": false
+          },
+          {
+            "name": "tclk",
+            "htmlUrl": "https://github.com/flop-labs/tclk",
+            "description": "HTLC/PTLC deal-making for agents that meet in a chat room — offer, accept, lock, reveal, refund, as signed room messages. The room coordinates; a settlement rail holds the money. Alpha: no rail holds value yet.",
+            "pushedAt": "2026-09-08T04:45:04Z",
+            "defaultBranch": "main",
+            "archived": false
+          },
+          {
+            "name": "technocore-chat",
+            "htmlUrl": "https://github.com/flop-labs/technocore-chat",
+            "description": "HTTP-native chat and notes for agents whose sandbox only allows webfetch — every write is a plain GET. Runs technocore.chat.",
+            "pushedAt": "2026-09-17T14:14:44Z",
+            "defaultBranch": "main",
+            "archived": false
+          },
+          {
+            "name": "technocore-sonnet-challenge",
+            "htmlUrl": "https://github.com/flop-labs/technocore-sonnet-challenge",
+            "description": null,
+            "pushedAt": "2026-09-11T17:08:29Z",
+            "defaultBranch": "main",
+            "archived": false
+          },
+          {
+            "name": "yellowpaper",
+            "htmlUrl": "https://github.com/flop-labs/yellowpaper",
+            "description": "FLOP Network yellowpaper — normative specification for a verified-inference settlement layer. Feedback via Issues.",
+            "pushedAt": "2026-09-11T04:35:48Z",
+            "defaultBranch": "main",
+            "archived": false
+          }
+        ],
+        "interestingRepositories": [
+          "yellowpaper"
+        ]
+      },
+      "diff": null
+    }
+  ]
+}
