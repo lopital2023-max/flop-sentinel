@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "type": "flop-sentinel-source-register",
-  "generatedAt": "2026-09-23T02:32:33.535Z",
+  "generatedAt": "2026-09-24T02:32:51.141Z",
   "collectionPolicy": {
     "networkMode": "read-only",
     "allowlistOnly": true,
@@ -16,15 +16,15 @@
       "kind": "openapi",
       "url": "https://technocore.chat/openapi.json",
       "finalUrl": "https://technocore.chat/openapi.json",
-      "observedAt": "2026-09-23T02:32:33.535Z",
+      "observedAt": "2026-09-24T02:32:51.141Z",
       "httpStatus": 200,
       "contentType": "application/json",
-      "observationStatus": "unchanged",
-      "normalizedSha256": "0cb0a3df065f80591fee5718a08fa8d10a2830075e052f867d5fe77514c76701",
+      "observationStatus": "changed",
+      "normalizedSha256": "03ee388f97f298181b3610f9c6a349a4f1f826d21706a94e67b4917dfb9e3426",
       "raw": {
-        "sha256": "f5bece6ceafacc6f16d7df65d8c727367b3fbdc1ac8810eb0e3871d8679823b3",
+        "sha256": "ad0d4ed1dabebe0852a04ea3ab31a3e6b50a35aa1ef3bee816b147d086d1b873",
         "bytes": 77348,
-        "path": "evidence/snapshots/f5bece6ceafacc6f16d7df65d8c727367b3fbdc1ac8810eb0e3871d8679823b3.snapshot"
+        "path": "evidence/snapshots/ad0d4ed1dabebe0852a04ea3ab31a3e6b50a35aa1ef3bee816b147d086d1b873.snapshot"
       }
     },
     {
@@ -32,7 +32,7 @@
       "kind": "text",
       "url": "https://technocore.chat/auth.md",
       "finalUrl": "https://technocore.chat/auth.md",
-      "observedAt": "2026-09-23T02:32:33.535Z",
+      "observedAt": "2026-09-24T02:32:51.141Z",
       "httpStatus": 200,
       "contentType": "text/plain; charset=utf-8",
       "observationStatus": "unchanged",
@@ -48,7 +48,7 @@
       "kind": "html",
       "url": "https://flop.finance/",
       "finalUrl": "https://flop.finance/",
-      "observedAt": "2026-09-23T02:32:33.535Z",
+      "observedAt": "2026-09-24T02:32:51.141Z",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "observationStatus": "unchanged",
@@ -64,15 +64,15 @@
       "kind": "github-repos",
       "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
       "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-      "observedAt": "2026-09-23T02:32:33.535Z",
+      "observedAt": "2026-09-24T02:32:51.141Z",
       "httpStatus": 200,
       "contentType": "application/json; charset=utf-8",
-      "observationStatus": "unchanged",
-      "normalizedSha256": "b1384095907f1110a93a0db1fe906083577ad6f0666f417f02d07aea6dd76a54",
+      "observationStatus": "changed",
+      "normalizedSha256": "5e98a0af2bdb28c980fe77dfc9efa47e33a6530dcf0ef66ecb67c53459964f01",
       "raw": {
-        "sha256": "6a8a9e460ea63183ba71f983d62639cfa2c5854ccd527c7b8f802e8625663d47",
-        "bytes": 27911,
-        "path": "evidence/snapshots/6a8a9e460ea63183ba71f983d62639cfa2c5854ccd527c7b8f802e8625663d47.snapshot"
+        "sha256": "ca16dd6487ea7f96406154b5a517684d3a1cb424ad70d1cde2583f87a893a179",
+        "bytes": 27926,
+        "path": "evidence/snapshots/ca16dd6487ea7f96406154b5a517684d3a1cb424ad70d1cde2583f87a893a179.snapshot"
       }
     }
   ],
