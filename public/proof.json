@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "type": "flop-sentinel-proof-discovery",
-  "generatedAt": "2026-09-25T02:32:50.310Z",
+  "generatedAt": "2026-09-26T07:50:52.209Z",
   "manifestIndex": "evidence/manifests/index.json",
   "attestationIndex": "evidence/attestations/index.json",
   "latest": {
     "manifest": {
-      "sequence": 30,
-      "hash": "73fa7e0f8ad22b9cb73f679cbf600bba961b57050159567e9709ebd95ec3af5a",
-      "path": "evidence/manifests/000030-73fa7e0f8ad22b9cb73f679cbf600bba961b57050159567e9709ebd95ec3af5a.json",
-      "observedAt": "2026-09-25T02:32:48.157Z",
-      "createdAt": "2026-09-25T02:32:50.172Z",
-      "previousManifestHash": "2eb4ddb22ad642af9fa87074af3355a4a5d69ff09cdb459780fa5d8ca0041254",
+      "sequence": 31,
+      "hash": "8507d27d9cb6ad76c7bba5d13ca2b20ee615416a4a70f7a539f521162657846b",
+      "path": "evidence/manifests/000031-8507d27d9cb6ad76c7bba5d13ca2b20ee615416a4a70f7a539f521162657846b.json",
+      "observedAt": "2026-09-26T07:50:50.792Z",
+      "createdAt": "2026-09-26T07:50:51.907Z",
+      "previousManifestHash": "73fa7e0f8ad22b9cb73f679cbf600bba961b57050159567e9709ebd95ec3af5a",
       "sourceCount": 4,
       "artifactCount": 4
     },
@@ -29,10 +29,10 @@
   },
   "verification": {
     "ok": true,
-    "manifestCount": 30,
+    "manifestCount": 31,
     "attestationCount": 2,
-    "snapshotReferences": 120,
-    "artifactReferences": 120,
+    "snapshotReferences": 124,
+    "artifactReferences": 124,
     "latestManifestReviewed": false
   },
   "limitation": "Reviewed source-provenance checkpoint; not FLOP endorsement, reward eligibility, or on-chain proof."
