@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "type": "flop-sentinel-source-register",
-  "generatedAt": "2026-09-28T08:47:18.034Z",
+  "generatedAt": "2026-09-29T08:41:48.751Z",
   "collectionPolicy": {
     "networkMode": "read-only",
     "allowlistOnly": true,
@@ -16,7 +16,7 @@
       "kind": "openapi",
       "url": "https://technocore.chat/openapi.json",
       "finalUrl": "https://technocore.chat/openapi.json",
-      "observedAt": "2026-09-28T08:47:18.034Z",
+      "observedAt": "2026-09-29T08:41:48.751Z",
       "httpStatus": 200,
       "contentType": "application/json",
       "observationStatus": "unchanged",
@@ -32,7 +32,7 @@
       "kind": "text",
       "url": "https://technocore.chat/auth.md",
       "finalUrl": "https://technocore.chat/auth.md",
-      "observedAt": "2026-09-28T08:47:18.034Z",
+      "observedAt": "2026-09-29T08:41:48.751Z",
       "httpStatus": 200,
       "contentType": "text/plain; charset=utf-8",
       "observationStatus": "unchanged",
@@ -48,15 +48,15 @@
       "kind": "html",
       "url": "https://flop.finance/",
       "finalUrl": "https://flop.finance/",
-      "observedAt": "2026-09-28T08:47:18.034Z",
+      "observedAt": "2026-09-29T08:41:48.751Z",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "observationStatus": "unchanged",
       "normalizedSha256": "f881af0deb4f209e3c7cc7d9757a26b2b5197bb7336d0d46d374150fb00f86e1",
       "raw": {
-        "sha256": "ec2d4b330ef96759bb48bbbc1b90541297134473555a203a13b59998bda5c14f",
+        "sha256": "a1d9d85f7728a1ace3394f3a6caeaf1e89547327b65cf6bd4f8213c363e3d833",
         "bytes": 17757,
-        "path": "evidence/snapshots/ec2d4b330ef96759bb48bbbc1b90541297134473555a203a13b59998bda5c14f.snapshot"
+        "path": "evidence/snapshots/a1d9d85f7728a1ace3394f3a6caeaf1e89547327b65cf6bd4f8213c363e3d833.snapshot"
       }
     },
     {
@@ -64,15 +64,15 @@
       "kind": "github-repos",
       "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
       "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-      "observedAt": "2026-09-28T08:47:18.034Z",
+      "observedAt": "2026-09-29T08:41:48.751Z",
       "httpStatus": 200,
       "contentType": "application/json; charset=utf-8",
       "observationStatus": "changed",
-      "normalizedSha256": "19b992afad8f1ab6fa5878654c55cd09c9e0cb4a0b38f088b0b49327a9023b0b",
+      "normalizedSha256": "1511c747e6f2472300e6a853c899c2faf761102e309f3da2369f8e297c695cad",
       "raw": {
-        "sha256": "b874a6f4edfede3a9861c7ddc37c5ee8ecb8efc8290a8fb4aa4f2ec8a8d27b3a",
-        "bytes": 34179,
-        "path": "evidence/snapshots/b874a6f4edfede3a9861c7ddc37c5ee8ecb8efc8290a8fb4aa4f2ec8a8d27b3a.snapshot"
+        "sha256": "4b6c234b88594731f2328ffa8b72b15c922a51c15bf6c5c0bbec0b7ee2f394ad",
+        "bytes": 34181,
+        "path": "evidence/snapshots/4b6c234b88594731f2328ffa8b72b15c922a51c15bf6c5c0bbec0b7ee2f394ad.snapshot"
       }
     }
   ],
