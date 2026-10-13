@@ -1,9 +1,21 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-12T09:24:28.563Z",
-  "observationCount": 47,
-  "eventCount": 36,
+  "generatedAt": "2026-10-13T09:33:18.207Z",
+  "observationCount": 48,
+  "eventCount": 37,
   "events": [
+    {
+      "id": "2026-10-13T09:33:18.207Z:flop-github-repos",
+      "observedAt": "2026-10-13T09:33:18.207Z",
+      "sourceId": "flop-github-repos",
+      "sourceUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "Updated repositories: yellowpaper."
+      ],
+      "sha256": "a8c09f181300a63219bb6c8536e4f9ad0bd7e9c677c166d792f986c0fc69dada"
+    },
     {
       "id": "2026-10-10T08:38:57.935Z:flop-github-repos",
       "observedAt": "2026-10-10T08:38:57.935Z",
