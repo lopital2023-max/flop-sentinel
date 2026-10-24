@@ -1,9 +1,21 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-23T07:41:38.321Z",
-  "observationCount": 55,
-  "eventCount": 39,
+  "generatedAt": "2026-10-24T07:24:42.195Z",
+  "observationCount": 56,
+  "eventCount": 40,
   "events": [
+    {
+      "id": "2026-10-24T07:24:42.195Z:flop-site",
+      "observedAt": "2026-10-24T07:24:42.195Z",
+      "sourceId": "flop-site",
+      "sourceUrl": "https://flop.finance/",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "The normalized content hash changed."
+      ],
+      "sha256": "ca42193e82ca6e1213a9324e37c0e6e7cfe73931c6ec277dabd993aa7a3ddd69"
+    },
     {
       "id": "2026-10-23T07:41:38.321Z:flop-github-repos",
       "observedAt": "2026-10-23T07:41:38.321Z",
