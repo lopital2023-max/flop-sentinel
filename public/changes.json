@@ -1,9 +1,22 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-29T08:38:45.684Z",
-  "observationCount": 61,
-  "eventCount": 41,
+  "generatedAt": "2026-10-30T08:45:44.280Z",
+  "observationCount": 62,
+  "eventCount": 42,
   "events": [
+    {
+      "id": "2026-10-30T08:45:44.280Z:flop-github-repos",
+      "observedAt": "2026-10-30T08:45:44.280Z",
+      "sourceId": "flop-github-repos",
+      "sourceUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "Added repositories: network.",
+        "Updated repositories: technocore-chat."
+      ],
+      "sha256": "670b92095061c4078a26ffe4563545bb1e5915f9bea5f958954fc8d23c626df2"
+    },
     {
       "id": "2026-10-26T07:55:01.250Z:flop-github-repos",
       "observedAt": "2026-10-26T07:55:01.250Z",
