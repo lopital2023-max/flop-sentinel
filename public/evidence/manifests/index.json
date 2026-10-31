@@ -497,6 +497,14 @@
       "observedAt": "2026-10-30T08:45:44.280Z",
       "createdAt": "2026-10-30T08:45:45.258Z",
       "previousManifestHash": "1b7c9baafe7c117f47de9f0b0232600c6435f0b133a056e47aa10331e81c1cac"
+    },
+    {
+      "sequence": 63,
+      "hash": "631eb59e4a38491875219bf10812af602152926869dc96cf003203af5609023a",
+      "path": "evidence/manifests/000063-631eb59e4a38491875219bf10812af602152926869dc96cf003203af5609023a.json",
+      "observedAt": "2026-10-31T08:32:32.905Z",
+      "createdAt": "2026-10-31T08:32:33.777Z",
+      "previousManifestHash": "b3c825570211a3c96f073acb7aa3fff3d90585368d687ff4a92207fee0f853cf"
     }
   ]
 }
