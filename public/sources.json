@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "type": "flop-sentinel-source-register",
-  "generatedAt": "2026-11-01T09:23:39.108Z",
+  "generatedAt": "2026-11-02T09:38:47.706Z",
   "collectionPolicy": {
     "networkMode": "read-only",
     "allowlistOnly": true,
@@ -16,7 +16,7 @@
       "kind": "openapi",
       "url": "https://technocore.chat/openapi.json",
       "finalUrl": "https://technocore.chat/openapi.json",
-      "observedAt": "2026-11-01T09:23:39.108Z",
+      "observedAt": "2026-11-02T09:38:47.706Z",
       "httpStatus": 200,
       "contentType": "application/json",
       "observationStatus": "unchanged",
@@ -32,7 +32,7 @@
       "kind": "text",
       "url": "https://technocore.chat/auth.md",
       "finalUrl": "https://technocore.chat/auth.md",
-      "observedAt": "2026-11-01T09:23:39.108Z",
+      "observedAt": "2026-11-02T09:38:47.706Z",
       "httpStatus": 200,
       "contentType": "text/plain; charset=utf-8",
       "observationStatus": "unchanged",
@@ -48,7 +48,7 @@
       "kind": "html",
       "url": "https://flop.finance/",
       "finalUrl": "https://flop.finance/",
-      "observedAt": "2026-11-01T09:23:39.108Z",
+      "observedAt": "2026-11-02T09:38:47.706Z",
       "httpStatus": 200,
       "contentType": "text/html; charset=utf-8",
       "observationStatus": "unchanged",
@@ -64,15 +64,15 @@
       "kind": "github-repos",
       "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
       "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-      "observedAt": "2026-11-01T09:23:39.108Z",
+      "observedAt": "2026-11-02T09:38:47.706Z",
       "httpStatus": 200,
       "contentType": "application/json; charset=utf-8",
       "observationStatus": "unchanged",
       "normalizedSha256": "670b92095061c4078a26ffe4563545bb1e5915f9bea5f958954fc8d23c626df2",
       "raw": {
-        "sha256": "1e6029e8e4e560cb88d2c0aefe4b91414a61185d0db6c15e06e63177b8a8cd2f",
+        "sha256": "4c3a10173e76b4dbd5d423ffeaaaf7f3eb8be37dadbc16ec9287b2fcced05192",
         "bytes": 44831,
-        "path": "evidence/snapshots/1e6029e8e4e560cb88d2c0aefe4b91414a61185d0db6c15e06e63177b8a8cd2f.snapshot"
+        "path": "evidence/snapshots/4c3a10173e76b4dbd5d423ffeaaaf7f3eb8be37dadbc16ec9287b2fcced05192.snapshot"
       }
     }
   ],
