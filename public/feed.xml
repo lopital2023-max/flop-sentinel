@@ -2,10 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>urn:flop-sentinel:source-changes</id>
   <title>FLOP Sentinel source changes</title>
-  <updated>2026-11-10T10:01:24.402Z</updated>
+  <updated>2026-11-11T09:35:11.778Z</updated>
   <link rel="self" href="https://lopital2023-max.github.io/flop-sentinel/feed.xml" />
   <link rel="alternate" href="https://lopital2023-max.github.io/flop-sentinel/changes/" />
   <subtitle>Unofficial official-source change signals; review primary evidence before acting.</subtitle>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-11-11T09%3A35%3A11.778Z%3Aflop-site</id>
+    <title>flop-site: source-change</title>
+    <updated>2026-11-11T09:35:11.778Z</updated>
+    <link rel="alternate" href="https://flop.finance/" />
+    <summary>The normalized content hash changed.</summary>
+    <category term="notice" />
+  </entry>
+  <entry>
+    <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-11-11T09%3A35%3A11.778Z%3Aflop-github-repos</id>
+    <title>flop-github-repos: source-change</title>
+    <updated>2026-11-11T09:35:11.778Z</updated>
+    <link rel="alternate" href="https://api.github.com/orgs/flop-labs/repos?per_page=100&amp;type=public" />
+    <summary>Updated repositories: network.</summary>
+    <category term="notice" />
+  </entry>
   <entry>
     <id>https://lopital2023-max.github.io/flop-sentinel/changes/#2026-11-10T10%3A01%3A24.402Z%3Aflop-github-repos</id>
     <title>flop-github-repos: source-change</title>
