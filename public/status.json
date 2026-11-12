@@ -5,7 +5,7 @@
     "status": "unofficial",
     "purpose": "Evidence-based FLOP source and claim verification for people and agents."
   },
-  "generatedAt": "2026-11-11T09:35:11.778Z",
+  "generatedAt": "2026-11-12T09:56:58.106Z",
   "sourceReportVersion": 1,
   "readOnlyObservations": true,
   "disclaimer": [
@@ -24,7 +24,7 @@
           "sourceId": "technocore-openapi",
           "url": "https://technocore.chat/openapi.json",
           "finalUrl": "https://technocore.chat/openapi.json",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "241b8528760c48ba07c78ac3f015ae3d04d59d131d07b6446e183d088b231077"
         }
       ]
@@ -39,7 +39,7 @@
           "sourceId": "technocore-auth",
           "url": "https://technocore.chat/auth.md",
           "finalUrl": "https://technocore.chat/auth.md",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "7a35bbcb3cebdbe15e21bb26b5e9a24ac3a39d992da6e40cb57e7957b9f06f66"
         }
       ]
@@ -54,7 +54,7 @@
           "sourceId": "technocore-auth",
           "url": "https://technocore.chat/auth.md",
           "finalUrl": "https://technocore.chat/auth.md",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "7a35bbcb3cebdbe15e21bb26b5e9a24ac3a39d992da6e40cb57e7957b9f06f66"
         }
       ]
@@ -69,7 +69,7 @@
           "sourceId": "technocore-openapi",
           "url": "https://technocore.chat/openapi.json",
           "finalUrl": "https://technocore.chat/openapi.json",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "241b8528760c48ba07c78ac3f015ae3d04d59d131d07b6446e183d088b231077"
         }
       ]
@@ -84,29 +84,29 @@
           "sourceId": "technocore-openapi",
           "url": "https://technocore.chat/openapi.json",
           "finalUrl": "https://technocore.chat/openapi.json",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "241b8528760c48ba07c78ac3f015ae3d04d59d131d07b6446e183d088b231077"
         },
         {
           "sourceId": "technocore-auth",
           "url": "https://technocore.chat/auth.md",
           "finalUrl": "https://technocore.chat/auth.md",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "7a35bbcb3cebdbe15e21bb26b5e9a24ac3a39d992da6e40cb57e7957b9f06f66"
         },
         {
           "sourceId": "flop-site",
           "url": "https://flop.finance/",
           "finalUrl": "https://flop.finance/",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "fa6f18838aae0ce07f7f9aa04a58857cbf96e77d21f0e07d1a23f1e2d2a600d7"
         },
         {
           "sourceId": "flop-github-repos",
           "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
           "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-          "observedAt": "2026-11-11T09:35:11.778Z",
-          "sha256": "d1fc5b53b25451cb48a380e5b64a213d7e0c78def4b4b81fea1b5bd2d2b599b9"
+          "observedAt": "2026-11-12T09:56:58.106Z",
+          "sha256": "69086558fc7c9dc13d2e0e87418924cef07debdb5ea60f5dd693f831a9070fa0"
         }
       ]
     },
@@ -120,29 +120,29 @@
           "sourceId": "technocore-openapi",
           "url": "https://technocore.chat/openapi.json",
           "finalUrl": "https://technocore.chat/openapi.json",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "241b8528760c48ba07c78ac3f015ae3d04d59d131d07b6446e183d088b231077"
         },
         {
           "sourceId": "technocore-auth",
           "url": "https://technocore.chat/auth.md",
           "finalUrl": "https://technocore.chat/auth.md",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "7a35bbcb3cebdbe15e21bb26b5e9a24ac3a39d992da6e40cb57e7957b9f06f66"
         },
         {
           "sourceId": "flop-site",
           "url": "https://flop.finance/",
           "finalUrl": "https://flop.finance/",
-          "observedAt": "2026-11-11T09:35:11.778Z",
+          "observedAt": "2026-11-12T09:56:58.106Z",
           "sha256": "fa6f18838aae0ce07f7f9aa04a58857cbf96e77d21f0e07d1a23f1e2d2a600d7"
         },
         {
           "sourceId": "flop-github-repos",
           "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
           "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-          "observedAt": "2026-11-11T09:35:11.778Z",
-          "sha256": "d1fc5b53b25451cb48a380e5b64a213d7e0c78def4b4b81fea1b5bd2d2b599b9"
+          "observedAt": "2026-11-12T09:56:58.106Z",
+          "sha256": "69086558fc7c9dc13d2e0e87418924cef07debdb5ea60f5dd693f831a9070fa0"
         }
       ]
     }
@@ -153,7 +153,7 @@
       "id": "technocore-openapi",
       "url": "https://technocore.chat/openapi.json",
       "finalUrl": "https://technocore.chat/openapi.json",
-      "observedAt": "2026-11-11T09:35:11.778Z",
+      "observedAt": "2026-11-12T09:56:58.106Z",
       "status": "unchanged",
       "sha256": "241b8528760c48ba07c78ac3f015ae3d04d59d131d07b6446e183d088b231077",
       "error": null
@@ -162,7 +162,7 @@
       "id": "technocore-auth",
       "url": "https://technocore.chat/auth.md",
       "finalUrl": "https://technocore.chat/auth.md",
-      "observedAt": "2026-11-11T09:35:11.778Z",
+      "observedAt": "2026-11-12T09:56:58.106Z",
       "status": "unchanged",
       "sha256": "7a35bbcb3cebdbe15e21bb26b5e9a24ac3a39d992da6e40cb57e7957b9f06f66",
       "error": null
@@ -171,8 +171,8 @@
       "id": "flop-site",
       "url": "https://flop.finance/",
       "finalUrl": "https://flop.finance/",
-      "observedAt": "2026-11-11T09:35:11.778Z",
-      "status": "changed",
+      "observedAt": "2026-11-12T09:56:58.106Z",
+      "status": "unchanged",
       "sha256": "fa6f18838aae0ce07f7f9aa04a58857cbf96e77d21f0e07d1a23f1e2d2a600d7",
       "error": null
     },
@@ -180,9 +180,9 @@
       "id": "flop-github-repos",
       "url": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
       "finalUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
-      "observedAt": "2026-11-11T09:35:11.778Z",
+      "observedAt": "2026-11-12T09:56:58.106Z",
       "status": "changed",
-      "sha256": "d1fc5b53b25451cb48a380e5b64a213d7e0c78def4b4b81fea1b5bd2d2b599b9",
+      "sha256": "69086558fc7c9dc13d2e0e87418924cef07debdb5ea60f5dd693f831a9070fa0",
       "error": null
     }
   ]
