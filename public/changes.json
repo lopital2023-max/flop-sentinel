@@ -1,9 +1,33 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-24T12:38:25.832Z",
-  "observationCount": 87,
-  "eventCount": 57,
+  "generatedAt": "2026-11-26T11:05:14.085Z",
+  "observationCount": 88,
+  "eventCount": 59,
   "events": [
+    {
+      "id": "2026-11-26T11:05:14.085Z:flop-site",
+      "observedAt": "2026-11-26T11:05:14.085Z",
+      "sourceId": "flop-site",
+      "sourceUrl": "https://flop.finance/",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "The normalized content hash changed."
+      ],
+      "sha256": "98eaed1e62f60d5dc077a7e68ea96856a2ae61d72b4df0c72ad876dc78cbdedb"
+    },
+    {
+      "id": "2026-11-26T11:05:14.085Z:flop-github-repos",
+      "observedAt": "2026-11-26T11:05:14.085Z",
+      "sourceId": "flop-github-repos",
+      "sourceUrl": "https://api.github.com/orgs/flop-labs/repos?per_page=100&type=public",
+      "kind": "source-change",
+      "severity": "notice",
+      "summary": [
+        "Updated repositories: network."
+      ],
+      "sha256": "a45daa75075f28c0e4091fb6e86dc54fdcc930b2b99f99e77070725316efe655"
+    },
     {
       "id": "2026-11-24T12:38:25.832Z:flop-github-repos",
       "observedAt": "2026-11-24T12:38:25.832Z",
